@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifact Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('images/kafkaStelle.jpeg');
+            /* Replace with your background image path */
+            background-size: cover;
+            background-attachment: fixed;
+            /* Fixed background image */
+            color: aliceblue;
+        }
+
+        .character-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Translucent white background */
+        }
+
+        .column {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .character-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .attribute-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+
+        .filter-container {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Translucent white background */
+
+        }
+
+
+
+
+
+
+
+        #weapon-type-filter,
+        #element-filter,
+        #artifact-set-filter,
+        #sands-filter,
+        #goblet-filter,
+        #circlet-filter,
+        #linkRope-filter,
+        #planar-set-filter {
+            display: inline-block;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 4px;
+            color: white;
+            font-size: 130%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+                0 1px 1px rgba(128, 128, 128, 0.155),
+                0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+                0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+                0 12px 12px rgba(128, 128, 128, 0.35);
+
+            h1 {
+                margin: 0 0 24px 0;
+            }
+
+            .form-input-material {
+                margin: 12px 0;
+            }
+
+        }
+
+        #title {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <a href="index.html"><img src="images/genahinArtifactDatabase.webp" alt="genshin programs" height="100"
+                width="1200"></a>
+    </div>
+
+
+
+    <!-- Filtering options -->
+    <div class="filter-container">
+        <label for="element-filter">Select Element:</label>
+        <select id="element-filter">
+            <option value="">All</option>
+            <option value="Fire">Fire</option>
+            <option value="Quantum">Quantum</option>
+            <option value="Wind">Wind</option>
+            <option value="Lightning">Lightning</option>
+            <option value="Imaginary">Imaginary</option>
+            <option value="Ice">Ice</option>
+            <option value="Physical">Physical</option>
+            <!-- Add more element options as needed -->
+        </select>
+
+        <label for="weapon-type-filter">Select Path:</label>
+        <select id="weapon-type-filter">
+            <option value="">All</option>
+            <option value="Hunt">Hunt</option>
+            <option value="Preservation">Preservation</option>
+            <option value="Nihility">Nihility</option>
+            <option value="Destruction">Destruction</option>
+            <option value="Erudation">Erudation</option>
+            <option value="Abundance">Abundance</option>
+            <option value="Harmony">Harmony</option>
+
+
+            <!-- Add more weapon type options as needed -->
+        </select>
+
+        <label for="artifact-set-filter">Select Artifact Set:</label>
+        <select id="artifact-set-filter">
+            <option value="">All</option>
+            <option value="Gladiator's Finale">Gladiator's Finale</option>
+            <option value="Band of Sizzling Thunder">Band of Sizzling Thunder</option>
+            <option value="Champion of Streetwise Boxing">Champion of Streetwise Boxing</option>
+            <option value="Eagle of Twilight Line">Eagle of Twilight Line</option>
+            <option value="Firesmith of Lava-Forging">Firesmith of Lava-Forging</option>
+            <option value="Genius of Brilliant Stars">Genius of Brilliant Stars</option>
+            <option value="Guard of Wuthering Snow">Guard of Wuthering Snow</option>
+            <option value="Hunter of Glacial Forest">Hunter of Glacial Forest</option>
+            <option value="TKnight of Purity Palace">Knight of Purity Palace</option>
+            <option value="Longevous Disciple">Longevous Disciple</option>
+            <option value="Messenger Traversing Hackerspace">Messenger Traversing Hackerspace</option>
+            <option value="Musketeer of Wild Wheat">Musketeer of Wild Wheat</option>
+            <option value="Passerby of Wandering Cloud">Passerby of Wandering Cloud</option>
+            <option value="Prisoner in Deep Confinement">Prisoner in Deep Confinement</option>
+            <option value="The Ashblazing Grand Duke">The Ashblazing Grand Duke</option>
+            <option value="Thief of Shooting Meteor">Thief of Shooting Meteor</option>
+            <option value="Wastelander of Banditry Desert">Wastelander of Banditry Desert</option>
+
+            <!-- Add more artifact set options as needed -->
+        </select>
+
+        <label for="planar-set-filter">Select Planar Set:</label>
+        <select id="planar-set-filter">
+            <option value="">All</option>
+            <option value="Belobog of the Architects">Belobog of the Architects</option>
+            <option value="Broken Keel">Broken Keel</option>
+            <option value="Celestial Differentiator">Celestial Differentiator</option>
+            <option value="Fleet of the Ageless">Fleet of the Ageless</option>
+            <option value="Inert Salsotto">Inert Salsotto</option>
+            <option value="Pan-Cosmic Commercial Enterprise">Pan-Cosmic Commercial Enterprise</option>
+            <option value="Penacony, Land of the Dreams">Penacony, Land of the Dreams</option>
+            <option value="Rutilant Arena">Rutilant Arena</option>
+            <option value="Space Sealing Station">Space Sealing Station</option>
+            <option value="Sprightly Vonwacq">Sprightly Vonwacq</option>
+            <option value="Talia: Kingdom of Banditry">Talia: Kingdom of Banditry</option>
+            <option value="Firmament Frontline: Glamoth">Firmament Frontline: Glamoth</option>
+
+            <!-- Add more artifact set options as needed -->
+        </select>
+        <br>
+        <label for="sands-filter">Select Body:</label>
+        <select id="sands-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="Effect Hit Rate">Effect Hit Rate</option>
+            <option value="Outgoing Healing Boost">Outgoing Healing Boost</option>
+            <option value="Crit Rate">Crit Rate</option>
+            <option value="Crit DMG">Crit DMG</option>
+            <option value="CRIT%">CRIT%</option>
+            <!-- Add more Sands options as needed -->
+        </select>
+
+        <label for="goblet-filter">Select Feet:</label>
+        <select id="goblet-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="Speed">Speed</option>
+            <!-- Add more Goblet options as needed -->
+        </select>
+
+        <label for="circlet-filter">Planar Sphere:</label>
+        <select id="circlet-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="Physical DMG">Physical DMG Boost</option>
+            <option value="Fire DMG">Fire DMG Boost</option>
+            <option value="Ice DMG">Ice DMG Boost</option>
+            <option value="Wind DMG">Wind DMG Boost</option>
+            <option value="Lightning DMG">Lightning DMG Boost</option>
+            <option value="Quantum DMG">Quantum DMG Boost</option>
+            <option value="Imaginary DMG">Imaginary DMG Boost</option>
+            <!-- Add more Circlet options as needed -->
+        </select>
+
+        <label for="linkRope-filter">Link Rope:</label>
+        <select id="linkRope-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="Break Effect">Break Effect</option>
+            <option value="Energy Regen Rate">Energy Regeneration Rate</option>
+
+
+
+            <!-- Add more Circlet options as needed -->
+        </select>
+
+
+    </div>
+
+    <!-- Character list -->
+    <div class="character-container" id="character-list">
+        <!-- Example Character Entry 1 -->
+        <div class="character-container">
+            <div class="column">
+                <h2>Character Name 1</h2>
+                <img class="character-image" src="character_image_1.jpg" alt="Character Image 1">
+            </div>
+            <div class="column">
+                <h3>Element</h3>
+                <img class="attribute-image" src="element_image_1.jpg" alt="Element Image 1">
+                <p>Anemo</p>
+
+                <h3>Weapon Type</h3>
+                <img class="attribute-image" src="weapon_type_image_1.jpg" alt="Weapon Type Image 1">
+                <p>Sword</p>
+
+                <h3>Sands</h3>
+                <img class="attribute-image" src="sands_image_1.jpg" alt="Sands Image 1">
+                <p>HP</p>
+
+                <h3>Goblet</h3>
+                <img class="attribute-image" src="goblet_image_1.jpg" alt="Goblet Image 1">
+                <p>Attack%</p>
+
+                <h3>PLanar Sphere</h3>
+                <img class="attribute-image" src="circlet_image_1.jpg" alt="Circlet Image 1">
+                <p>Crit Rate</p>
+
+                <h3>Link Rope</h3>
+                <img class="attribute-image" src="linkRope_image_1.jpg" alt="linkRope Image 1">
+                <p>Crit Rate</p>
+            </div>
+            <div class="column">
+                <h3>Artifact Set</h3>
+                <img class="attribute-image" src="artifact_image_1.jpg" alt="Artifact Image 1">
+                <p>Gladiator's Finale</p>
+
+                <h3>Planar Set</h3>
+                <img class="attribute-image" src="planar_image_1.jpg" alt="Planar Image 1">
+                <p>Test</p>
+
+                <h3>SubStats</h3>
+                <p>SubStat 1: Value</p>
+                <p>SubStat 2: Value</p>
+                <p>SubStat 3: Value</p>
+                <p>SubStat 4: Value</p>
+            </div>
+        </div>
+
+        <!-- Example Character Entry 2 (Pretty sure this does nothing) -->
+        <div class="character-container">
+            <div class="column">
+                <h2>Character Name 2</h2>
+                <img class="character-image" src="character_image_2.jpg" alt="Character Image 2">
+            </div>
+            <div class="column">
+                <h3>Element</h3>
+                <img class="attribute-image" src="element_image_2.jpg" alt="Element Image 2">
+                <p>Geo</p>
+
+                <h3>Path</h3>
+                <img class="attribute-image" src="weapon_type_image_2.jpg" alt="Weapon Type Image 2">
+                <p>Bow</p>
+
+                <h3>Body</h3>
+                <img class="attribute-image" src="sands_image_2.jpg" alt="Sands Image 2">
+                <p>ER%</p>
+
+                <h3>Feet</h3>
+                <img class="attribute-image" src="goblet_image_2.jpg" alt="Goblet Image 2">
+                <p>HP</p>
+
+                <h3>Planar Sphere</h3>
+                <img class="attribute-image" src="circlet_image_2.jpg" alt="Circlet Image 2">
+                <p>Crit DMG</p>
+
+                <h3>Link Rope</h3>
+                <img class="attribute-image" src="linkRope_image_1.jpg" alt="linkRope Image 1">
+                <p>Crit Rate</p>
+            </div>
+            <div class="column">
+                <h3>Artifact Set</h3>
+                <img class="attribute-image" src="artifact_image_2.jpg" alt="Artifact Image 2">
+                <p>Wanderer's Troupe</p>
+
+                <h3>SubStats</h3>
+                <p>SubStat 1: Value</p>
+                <p>SubStat 2: Value</p>
+                <p>SubStat 3: Value</p>
+                <p>SubStat 4: Value</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add more character entries as needed -->
+
+    <script>
+        // Add event listeners to each dropdown menu
+        document.getElementById('element-filter').addEventListener('change', filterCharacters);
+        document.getElementById('weapon-type-filter').addEventListener('change', filterCharacters);
+        document.getElementById('artifact-set-filter').addEventListener('change', filterCharacters);
+        document.getElementById('planar-set-filter').addEventListener('change', filterCharacters);
+        document.getElementById('sands-filter').addEventListener('change', filterCharacters);
+        document.getElementById('goblet-filter').addEventListener('change', filterCharacters);
+        document.getElementById('circlet-filter').addEventListener('change', filterCharacters);
+        document.getElementById('linkRope-filter').addEventListener('change', filterCharacters);
+
+        // Initial character data (replace with your actual data)
+        const characters = [
+            {
+                name: 'March 7th',
+                element: 'Ice',
+                weaponType: 'Preservation',
+                artifactSet: 'Knight of Purity Palace',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'Effect Hit Rate',
+                goblet: 'SPD',
+                circlet: 'DEF%',
+                linkRope: 'DEF%',
+                textLine4: 'SubStat 1: DEF% <br> SubStat 2: Speed <br> SubStat 3: Effect Hit Rate <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'images/march.jpg',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/preservation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+            {
+                name: 'Dan Heng',
+                element: 'Wind',
+                weaponType: 'Hunt',
+                artifactSet: 'Eagle of Twilight Line',
+                planarSet: 'Space Sealing Station',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Physical DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/dan.png',
+                    element: 'contents/icons/wind.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'TrailBlazer',
+                element: 'Physical',
+                weaponType: 'Destruction',
+                artifactSet: 'Champion of Streetwise Boxing',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate',
+                goblet: 'ATK%',
+                circlet: 'Wind DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/stelle.jpg',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Himiko',
+                element: 'Fire',
+                weaponType: 'Erudation',
+                artifactSet: 'The Ashblazing Grand Duke',
+                planarSet: 'Space Sealing Station',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Fire DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate\nSubStat 2: Crit DMG\nSubStat 3: Fire DMG <br> SubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/himiko.webp',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Welt',
+                element: 'Imaginary',
+                weaponType: 'Nihility',
+                artifactSet: 'Wastelander of Banditry Desert',
+                planarSet: 'Space Sealing Station',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Imaginary DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Effect Hit Rate\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/welt.png',
+                    element: 'contents/icons/imaginary.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+
+            {
+                name: 'Kafka',
+                element: 'Lightning',
+                weaponType: 'Nihility',
+                artifactSet: 'Prisoner in Deep Confinement',
+                planarSet: 'Firmament Frontline: Glamoth',
+                sands: 'ATK%',
+                goblet: 'Speed',
+                circlet: 'Lightning DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Speed\nSubStat 2: ATK%\nSubStat 3: Effect Hit Rate <br> SubStat 4: Break Effect%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/kafka.jpg',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+
+            {
+                name: 'SilverWolf',
+                element: 'Quantum',
+                weaponType: 'Nihility',
+                artifactSet: 'Genius of Brilliant Stars',
+                planarSet: 'Sprightly Vonwacq',
+                sands: 'Effect Hit Rate',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Break Effect',
+                textLine4: 'SubStat 1: Effect Hit Rate <br> SubStat 2: Speed <br> SubStat 3: Break Effect <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/silver.png',
+                    element: 'contents/icons/quantum.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Blade',
+                element: 'Wind',
+                weaponType: 'Destruction',
+                artifactSet: 'Longevous Disciple',
+                planarSet: 'Inert Salsotto',
+                sands: 'Crit DMG',
+                goblet: 'Speed',
+                circlet: 'Wind DMG',
+                linkRope: 'HP%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: Speed <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/blade.jpg',
+                    element: 'contents/icons/wind.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Herta',
+                element: 'Ice',
+                weaponType: 'Erudation',
+                artifactSet: 'Hunter of Glacial Forest',
+                planarSet: 'Space Sealing Station',
+                sands: 'Crit Rate%',
+                goblet: 'ATK%',
+                circlet: 'Ice DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit DMG <br> SubStat 2: Crit Rate <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/herta.jpg',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Asta',
+                element: 'Fire',
+                weaponType: 'Harmony',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Broken Keel',
+                sands: 'HP%',
+                goblet: 'Speed',
+                circlet: 'Fire DMG',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Effect Res <br> SubStat 2: Speed <br> SubStat 3: HP% <br> SubStat 4: Break Effect',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/asta.png',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/harmony.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Arlan',
+                element: 'Lightning',
+                weaponType: 'Destruction',
+                artifactSet: 'Band of Sizziling Thunder',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate%',
+                goblet: 'Speed',
+                circlet: 'Lightning DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/arlan.png',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Seele',
+                element: 'Quantum',
+                weaponType: 'Hunt',
+                artifactSet: 'Genius of Brilliant Stars',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate%',
+                goblet: 'ATK%',
+                circlet: 'Quantum DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/seele.webp',
+                    element: 'contents/icons/quantum.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Natasha',
+                element: 'Physical',
+                weaponType: 'Abundance',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'Outgoing Healing',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: HP% <br> SubStat 3: DEF% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/natasha.png',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/abundance.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Bronya',
+                element: 'Wind',
+                weaponType: 'Harmony',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Broken Keel',
+                sands: 'Crit DMG',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: Crit DMG <br> SubStat 3: HP% <br> SubStat 4: DEF%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/bronya.png',
+                    element: 'contents/icons/wind.webp',
+                    weaponType: 'contents/icons/harmony.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Serval',
+                element: 'Lightning',
+                weaponType: 'Erudation',
+                artifactSet: 'Thief of Shooting Meteor',
+                planarSet: 'Space Sealing Station',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Lightning DMG',
+                linkRope: 'Break Effect',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: Break Effect <br> SubStat 3: ATK% <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/serval.png',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Clara',
+                element: 'Physical',
+                weaponType: 'Destruction',
+                artifactSet: 'Champion of Streetwise Boxing',
+                planarSet: 'Inert Salsotto',
+                sands: 'Crit Rate',
+                goblet: 'ATK%',
+                circlet: 'Physical DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/clara.webp',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Pela',
+                element: 'Ice',
+                weaponType: 'Nihility',
+                artifactSet: 'Eagle of Twilight Line',
+                planarSet: 'Penacony, Land of the Dreams',
+                sands: 'Effect Hit Rate',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Effect Hit Rate <br> SubStat 2: Effect RES <br> SubStat 3: Speed <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/pela.webp',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Hook',
+                element: 'Fire',
+                weaponType: 'Destruction',
+                artifactSet: 'Firesmith of Lava-Forging',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Fire DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/hook.png',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Gepard',
+                element: 'Ice',
+                weaponType: 'Preservation',
+                artifactSet: 'Knights of Purity Palace',
+                planarSet: 'Belobog of the Architects',
+                sands: 'DEF%',
+                goblet: 'Speed',
+                circlet: 'DEF',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: DEF% <br> SubStat 3: HP% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/gepard.jpg',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/preservation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Sampo',
+                element: 'Wind',
+                weaponType: 'Nihility',
+                artifactSet: 'Prisoner in Deep Confinement',
+                planarSet: 'Pan-Cosmic Commercial Enterprise',
+                sands: 'Effect Hit Rate',
+                goblet: 'Speed',
+                circlet: 'Wind DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Effect Hit Rate <br> SubStat 2: Speed <br> SubStat 3: ATK% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/sampo.png',
+                    element: 'contents/icons/wind.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Lynx',
+                element: 'Quantum',
+                weaponType: 'Abundance',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'Outgoing Healing',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: HP% <br> SubStat 3: DEF% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/lynx.webp',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/abundance.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Luka',
+                element: 'Physical',
+                weaponType: 'Nihility',
+                artifactSet: 'Prisoner in Deep Confinement',
+                planarSet: 'Firmament Frontline: Glamoth',
+                sands: 'Effect Hit Rate',
+                goblet: 'Speed',
+                circlet: 'Physical DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Effect Hit Rate <br> SubStat 2: Speed <br> SubStat 3: ATK% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/luka.jpg',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Jing Yuan',
+                element: 'Lightning',
+                weaponType: 'Erudation',
+                artifactSet: 'The Ashblazing Grand Duke',
+                planarSet: 'Inert Salsotto',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Lightning DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/jingyuan.jpg',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Yanqing',
+                element: 'Ice',
+                weaponType: 'Hunt',
+                artifactSet: 'Hunter of Glacial Forest',
+                planarSet: 'Firment Frontline: Glamoth',
+                sands: 'Crit DMG',
+                goblet: 'ATK%',
+                circlet: 'Ice DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit DMG <br> SubStat 2: Crit Rate <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/yanqing.jpg',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Tingyun',
+                element: 'Lightning',
+                weaponType: 'Harmony',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Sprightly Vonwacq',
+                sands: 'ATK%',
+                goblet: 'Speed',
+                circlet: 'ATK%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed\nSubStat 2: HP%\nSubStat 3: DEF% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/tingyun.webp',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/harmony.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Bailu',
+                element: 'Lightning',
+                weaponType: 'Abundance',
+                artifactSet: 'Messenger Traversing Hackerspace',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'Outgoing Healing',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: HP% <br> SubStat 3: DEF% <br> SubStat 4: Effect RES',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/bailu.webp',
+                    element: 'contents/icons/electric.webp',
+                    weaponType: 'contents/icons/abundance.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Sushang',
+                element: 'Physical',
+                weaponType: 'Hunt',
+                artifactSet: 'Champion of Streetwise Boxing',
+                planarSet: 'Firmament Frontline: Glamoth',
+                sands: 'Crit Rate',
+                goblet: 'ATK%',
+                circlet: 'Physical DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/sushang.webp',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Qingque',
+                element: 'Quantum',
+                weaponType: 'Erudation',
+                artifactSet: 'Genius of Briliant Stars',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Quantum DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit DMG <br> SubStat 2: Crit Rate <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/qingque.png',
+                    element: 'contents/icons/quantum.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Hanya',
+                element: 'Physical',
+                weaponType: 'Harmony',
+                artifactSet: 'Wanderer\'s Troupe',
+                planarSet: 'Wanderer\'s Troupe',
+                sands: 'ER%',
+                goblet: 'HP',
+                circlet: 'Crit DMG',
+                linkRope: 'Link Rope',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG% <br> SubStat 4: Crit Rate%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/hanya.png',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/harmony.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Huohuo',
+                element: 'Wind',
+                weaponType: 'Abundance',
+                artifactSet: 'Passerby of Wandering Cloud',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'Outgoing Healing',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: SPD <br> SubStat 2: HP% <br> SubStat 3: Effect Res <br> SubStat 4: DEF%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/huohuo.webp',
+                    element: 'contents/icons/wind.webp',
+                    weaponType: 'contents/icons/abundance.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Guinaifen',
+                element: 'Fire',
+                weaponType: 'Nihility',
+                artifactSet: 'Prisoner in Deep Confinement',
+                planarSet: 'Firmament Frontline: Glamoth',
+                sands: 'ATK%',
+                goblet: 'Speed',
+                circlet: 'Fire DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: ATK% <br> SubStat 2: Effect Hit Rate <br> SubStat 3: Speed <br> SubStat 4: Break Effect',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/guinaifen.webp',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/nihility.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Jingliu',
+                element: 'Ice',
+                weaponType: 'Destruction',
+                artifactSet: 'Genius of Brilliant Stars',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit DMG',
+                goblet: 'Speed',
+                circlet: 'Ice DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: Speed <br> SubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/jingliu.webp',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/Destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Cooler Dan',
+                element: 'Imaginary',
+                weaponType: 'Destruction',
+                artifactSet: 'Wastelander of Banditry Desert',
+                planarSet: 'Rutilant Arena',
+                sands: 'Crit Rate',
+                goblet: 'ATK%',
+                circlet: 'Imaginary DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Speed <br> SubStat 2: Crit DMG <br> SubStat 3: Crit Rate <br> SubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/lunae.webp',
+                    element: 'contents/icons/imaginary.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Fu Xuan',
+                element: 'Quantum',
+                weaponType: 'Preservation',
+                artifactSet: 'Guard of Wuthering Snow',
+                planarSet: 'Fleet of the Ageless',
+                sands: 'HP%',
+                goblet: 'Speed',
+                circlet: 'HP%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: HP% <br> SubStat 2: DEF% <br> SubStat 3: Speed <br> SubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/fuxuan.webp',
+                    element: 'contents/icons/quantum.webp',
+                    weaponType: 'contents/icons/preservation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Argenti',
+                element: 'Physical',
+                weaponType: 'Erudation',
+                artifactSet: 'Wanderer\'s Troupe',
+                planarSet: 'Wanderer\'s Troupe',
+                sands: 'ER%',
+                goblet: 'HP',
+                circlet: 'Crit DMG',
+                linkRope: 'Link Rope',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG% <br> SubStat 4: Crit Rate%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/argenti.avif',
+                    element: 'contents/icons/physical.webp',
+                    weaponType: 'contents/icons/erudation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Topaz',
+                element: 'Fire',
+                weaponType: 'Hunt',
+                artifactSet: 'The Ashblazing Grand Duke',
+                planarSet: 'Inert Salsotto',
+                sands: 'Crit Rate',
+                goblet: 'Speed',
+                circlet: 'Fire DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Crit Rate <br> SubStat 2: Crit DMG <br> SubStat 3: ATK% <br> SubStat 4: Speed',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/topaz.png',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+            },
+
+            {
+                name: 'Stelle',
+                element: 'Fire',
+                weaponType: 'Preservation',
+                artifactSet: 'Knight of Purity Palace',
+                planarSet: 'Broken Keel',
+                sands: 'DEF%',
+                goblet: 'Speed',
+                circlet: 'DEF%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Effect RES <br> SubStat 2: Speed <br> SubStat 3: DEF% <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/stelle.jpg',
+                    element: 'contents/icons/fire.webp',
+                    weaponType: 'contents/icons/preservation.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+
+
+            },
+
+            {
+                name: 'Ruan Mei',
+                element: 'Ice',
+                weaponType: 'Harmony',
+                artifactSet: 'Knight of Purity Palace',
+                planarSet: 'Theif of Shooting Meteor',
+                sands: 'HP%',
+                goblet: 'Speed',
+                circlet: 'DEF%',
+                linkRope: 'Energy Regen Rate',
+                textLine4: 'SubStat 1: Effect RES <br> SubStat 2: Speed <br> SubStat 3: DEF% <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/ruanmei.webp',
+                    element: 'contents/icons/ice.webp',
+                    weaponType: 'contents/icons/harmony.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+
+
+            },
+
+            {
+                name: 'Xueyi',
+                element: 'Quantum',
+                weaponType: 'Hunt',
+                artifactSet: 'Genius of Brilliant Stars',
+                planarSet: 'Talia: Kingdom of Banditry',
+                sands: 'CRIT%',
+                goblet: 'Speed',
+                circlet: 'ATK%',
+                linkRope: 'Break Effect',
+                textLine4: 'SubStat 1: Effect RES <br> SubStat 2: Speed <br> SubStat 3: DEF% <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/xueyi.jpeg',
+                    element: 'contents/icons/quantum.webp',
+                    weaponType: 'contents/icons/destruction.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+
+
+            },
+
+            {
+                name: 'Dr. L+ Ratio',
+                element: 'Imaginary',
+                weaponType: 'Hunt',
+                artifactSet: 'wastelander of banditry desert',
+                planarSet: 'Firmament Frontline: Glamoth',
+                sands: 'CRIT%',
+                goblet: 'Speed',
+                circlet: 'Imaginary DMG',
+                linkRope: 'ATK%',
+                textLine4: 'SubStat 1: Effect RES <br> SubStat 2: Speed <br> SubStat 3: DEF% <br> SubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/characters/drratio.webp',
+                    element: 'contents/icons/imaginary.webp',
+                    weaponType: 'contents/icons/hunt.webp',
+                    sands: 'contents/icons/body.webp',
+                    goblet: 'contents/icons/feet.webp',
+                    circlet: 'contents/icons/planarSphere.webp',
+                    linkRope: 'contents/icons/linkRope.webp',
+                    planarSet: 'contents/icons/wanderersTrope.png',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+
+                },
+
+
+            },
+
+
+
+            // Add more character data as needed
+        ];
+
+        //------------------------------------------------------------------------------------
+
+        //-----------------------------------------------------------------------------------
+
+        // Initial rendering of characters
+        renderCharacters(characters);
+
+        // Function to filter and render characters based on user selections
+        function filterCharacters() {
+            const elementFilter = document.getElementById('element-filter').value;
+            const weaponTypeFilter = document.getElementById('weapon-type-filter').value;
+            const artifactSetFilter = document.getElementById('artifact-set-filter').value;
+            const planarSetFilter = document.getElementById('planar-set-filter').value;
+            const sandsFilter = document.getElementById('sands-filter').value;
+            const gobletFilter = document.getElementById('goblet-filter').value;
+            const circletFilter = document.getElementById('circlet-filter').value;
+            const linkRopeFilter = document.getElementById('linkRope-filter').value;
+
+
+            const characterContainer = document.getElementById('character-list');
+            characterContainer.style.opacity = '0'; // Set opacity to 0 before filtering
+
+            setTimeout(() => {
+                const filteredCharacters = characters.filter(character => {
+                    return (
+                        (elementFilter === '' || character.element === elementFilter) &&
+                        (weaponTypeFilter === '' || character.weaponType === weaponTypeFilter) &&
+                        (artifactSetFilter === '' || character.artifactSet === artifactSetFilter) &&
+                        (planarSetFilter === '' || character.planarSet === planarSetFilter) &&
+                        (sandsFilter === '' || character.sands === sandsFilter) &&
+                        (gobletFilter === '' || character.goblet === gobletFilter) &&
+                        (circletFilter === '' || character.circlet === circletFilter) &&
+                        (linkRopeFilter === '' || character.linkRope === linkRopeFilter)
+
+                    );
+                });
+
+                renderCharacters(filteredCharacters);
+                characterContainer.style.opacity = '1'; // Set opacity back to 1 after filtering
+            }, 500); // Adjust the timeout value to match the transition duration
+        }
+
+        // Function to render characters in the character container
+        function renderCharacters(charactersToRender) {
+            const characterContainer = document.getElementById('character-list');
+            characterContainer.innerHTML = '';
+
+            charactersToRender.forEach(character => {
+                const characterDiv = document.createElement('div');
+                characterDiv.classList.add('character-container');
+
+                // Create elements for the character entry (similar to the existing structure)
+                const nameElement = document.createElement('h2');
+                nameElement.textContent = character.name;
+
+                const characterImage = document.createElement('img');
+                characterImage.classList.add('character-image');
+                characterImage.src = character.images.character; // Use character image path
+                characterImage.alt = `Character Image ${character.name}`;
+
+                const elementSection = createAttributeSection('Element', character.images.element, character.element);
+                const weaponTypeSection = createAttributeSection('Path', character.images.weaponType, character.weaponType);
+                const sandsSection = createAttributeSection('Body', character.images.sands, character.sands);
+                const gobletSection = createAttributeSection('Feet', character.images.goblet, character.goblet);
+                const circletSection = createAttributeSection('Planar Sphere', character.images.circlet, character.circlet);
+                const linkRopeSection = createAttributeSection('Link Rope', character.images.linkRope, character.linkRope);
+                const artifactSetSection = createAttributeSection('Relic Set', character.images.artifactSet, character.artifactSet);
+                const planarSetSection = createAttributeSection('Planar Set', character.images.planarSet, character.planarSet);
+
+
+                const textSection = document.createElement('div');
+                textSection.classList.add('column');
+                textSection.innerHTML = `
+                      <h3>Substats</h3>
+                      <p>${character.textLine4}</p>
+                  `;
+
+                // Append elements to the character entry
+                characterDiv.appendChild(nameElement);
+                characterDiv.appendChild(characterImage);
+                characterDiv.appendChild(elementSection);
+                characterDiv.appendChild(weaponTypeSection);
+                characterDiv.appendChild(sandsSection);
+                characterDiv.appendChild(gobletSection);
+                characterDiv.appendChild(circletSection);
+                characterDiv.appendChild(linkRopeSection);
+                characterDiv.appendChild(artifactSetSection);
+                characterDiv.appendChild(planarSetSection);
+
+                characterDiv.appendChild(textSection);
+
+                // Append the character entry to the character container
+                characterContainer.appendChild(characterDiv);
+            });
+        }
+
+        // Helper function to create attribute sections
+        function createAttributeSection(attributeName, imagePath, attributeValue) {
+            const attributeSection = document.createElement('div');
+            attributeSection.classList.add('column');
+            attributeSection.innerHTML = `
+                  <h3>${attributeName}</h3>
+                  <img class="attribute-image" src="${imagePath}" alt="${attributeName} Image">
+                  <p>${attributeValue}</p>
+              `;
+            return attributeSection;
+        }
+    </script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="styleWish.css">
+<head>
+ 
+
+</head>
+
+<body>
+
+
+
+<div class="middlebit">
+  <a href="index.html"><img src="images/genshinWishCalculator.png" id="title" alt="genshin programs" height="100" width="1200"></a>
+  <p>This is a wish calculator for Genshin Impact </p>
+ <p>Please enter the following information into the text boxes to receive you wish predictions</p>
+
+
+<div id="left">
+    <form>
+      <label for="wishesSaved">Please enter the number of <b>wishes saved</b> currently</label>
+      <input type="number" id="wishesSaved" name="wishesSaved" placeholder="Wishes">
+        <br>
+      <label for="pity">Please enter the <b>current pity</b></label>
+      <input type="number" id="pity" name="lastname" placeholder="Pity">
+        <br>
+        <label for="fifty">Are you <b>garenteed</b> yor chosen character on your next five star</label>
+        <select id="fifty" name="fifty">
+          <option value="75">Yes</option>
+          <option value="0">No</option>
+        </select>
+        <br>
+      <br>
+      <label for="daysLeft">Please enter the <b>number of days</b> until the end of the <b>current update</b></label>
+      <select id="daysLeft" name="daysLeft">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+      </select>
+<br>
+      <label for="updateCount">Please enter the number of <b>updates</b> until your wanted character</label>
+      <select id="updateCount" name="updateCount">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <br>
+      <label for="updateHalf">Please select which <b>half of the update</b> your desired character's banner is on</label>
+      <select id="updateHalf" name="updateHalf">
+        <option value="75">The First Banner</option>
+        <option value="0">The Second Banner</option>
+      </select>
+      <br>
+      <label for="paid">Are you a <b>paid</b> user</label>
+      <select id="paid" name="paid">
+        <option value="37">BattlePass + Welkin</option>
+        <option value="7">BattlePass</option>
+        <option value="30">Welkin</option>
+        <option value="0">F2P</option>
+        <option value="99999">Whale</option>
+      </select>
+      <br>
+    <br>
+
+
+
+ <button  id="calculateButton">Calculate</button>
+   
+    </form>
+
+
+  </div>
+  
+  <div id="right">
+    <h1>Wish Results</h1>
+
+
+    <h2>Number of wishes you will be able to make: </h2>
+     <p id="wishes"></p>
+
+
+    <h2>Number of characters this will garentee you: </h2>
+    <p id="characters"></p>
+    
+    
+
+
+  </div>
+</div>
+<!-- ---------------------------------THIS IS WHERE THE FUN BEGINS--------------------------------  -->
+<script>
+    function calculate(){
+     
+  //Get all the values from the form
+
+  const wishesSaved = parseInt(document.getElementById('wishesSaved').value); //number of wishes the user has currently saved
+  var pity= parseInt(document.getElementById('pity').value); //the current pity level of the user
+  var fifty= parseInt(document.getElementById('fifty').value); //if the user has a gareenteed chosen character or not (possibly bool)
+  var daysLeft= parseInt(document.getElementById('daysLeft').value); //number of days left on the update
+  var updateCount= parseInt(document.getElementById('updateCount').value); //how many updates until the characters banner
+  var updateHalf= parseInt(document.getElementById('updateHalf').value); //if the character is released on the first or second half of the update
+  var paid= parseInt(document.getElementById('paid').value); //if the user buys the welkin and battlepass (about 36 wishes per update)
+  
+  var wishesPerUpdate = 72 + paid;
+
+
+  var totalWishesSaved = wishesSaved + pity + fifty + (updateCount * wishesPerUpdate) + ((wishesPerUpdate/40) * daysLeft) - updateHalf;
+
+  var charactersGaurenteed = totalWishesSaved / 150;
+  
+
+  //remove fractions
+    var printedWishes = ~~ totalWishesSaved;
+    var printedCharacters = ~~ charactersGaurenteed;
+
+  //output to webpage
+  
+    document.getElementById("wishes").innerHTML =  printedWishes;
+    document.getElementById("characters").innerHTML = printedCharacters;
+    event.preventDefault()
+  return false;
+  }
+  
+  calculateButton.addEventListener('click', () => {
+      calculate();
+    });
+  
+  
+  </script>
+
+
+
+</body>
+</html>

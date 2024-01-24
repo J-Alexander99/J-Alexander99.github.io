@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- TEST-->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--TEST-->
+<title>Resin Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="mainhead">
+  <a href="index.html"><img src="images/genshinResinCalculator.png" id="title" alt="genshin programs" height="100" width="1200"></a>
+<p>This tool is designed to calculate how long it takes to get enough resin to upgrade a character </p>
+<p>Simply enter the required information into the boxes below to continue..</p>
+</div>
+<div id="contentbit">
+    <div id="gather">
+
+<form class="login-form" action="javascript:void(0);">
+    
+    <label for="currentLevel">Enter the characters current level:</label>
+    <select id="currentLevel" name="currentLevel">
+      <option value="0">Level 1-40</option>
+      <option value="2">Level 40-50</option>
+      <option value="6">Level 50-60</option>
+      <option value="14">Level 60-70</option>
+      <option value="26">Level 70-80</option>
+      <option value="46">Level 80-90</option>
+    </select>
+
+
+
+    <label for="desiredLevel">Enter the characters desired level:</label>
+    <select id="desiredLevel" name="desiredLevel">
+      <option value="2">Level 40-50</option>
+      <option value="6">Level 50-60</option>
+      <option value="14">Level 60-70</option>
+      <option value="26">Level 70-80</option>
+      <option value="46">Level 80-90</option>
+    </select>
+<br>
+<br>
+
+
+
+
+    <label for="commonHave">Enter the amount of common talent material you currently have:</label>
+    <input type="number" id="commonHave" name="commonHave">
+<br>
+<br>
+
+ 
+    <label for="uncommonHave">Enter the amount of uncommon talent material you currently have:</label>
+    <input type="number" id="uncommonHave" name="uncommonHave">
+ <br>
+ <br>
+
+
+    <label for="rareHave">Enter the amount of common talent material you currently have:</label>
+    <input type="number" id="rareHave" name="rareHave">
+<br>
+
+
+<h3>Enter the current talent level of the characters:</h3>
+
+    <label for="currentNormalLevel">Basic attack level:</label>
+    <select id="currentNormalLevel" name="currentNormalLevel">
+      <option value="0">Basic Level 1</option>
+      <option value="3">Basic Level 2</option>
+      <option value="9">Basic Level 3</option>
+      <option value="21">Basic Level 4</option>
+      <option value="39">Basic Level 5</option>
+      <option value="66">Basic Level 6</option>
+      <option value="102">Basic Level 7</option>
+      <option value="156">Basic Level 8</option>
+      <option value="264">Basic Level 9</option>
+      <option value="408">Basic Level 10</option>
+    </select>
+
+
+
+    <label for="currentSkillLevel">Skill level:</label>
+    <select id="currentSkillLevel" name="currentSkillLevel">
+      <option value="0">Skill Level 1</option>
+      <option value="3">Skill Level 2</option>
+      <option value="9">Skill Level 3</option>
+      <option value="21">Skill Level 4</option>
+      <option value="39">Skill Level 5</option>
+      <option value="66">Skill Level 6</option>
+      <option value="102">Skill Level 7</option>
+      <option value="156">Skill Level 8</option>
+      <option value="264">Skill Level 9</option>
+      <option value="408">Skill Level 10</option>
+    </select>
+ 
+
+    <label for="currentBurstLevel">Burst level:</label>
+    <select id="currentBurstLevel" name="currentBurstLevel">
+      <option value="0">Burst Level 1</option>
+      <option value="3">Burst Level 2</option>
+      <option value="9">Burst Level 3</option>
+      <option value="21">Burst Level 4</option>
+      <option value="39">Burst Level 5</option>
+      <option value="66">Burst Level 6</option>
+      <option value="102">Burst Level 7</option>
+      <option value="156">Burst Level 8</option>
+      <option value="264">Burst Level 9</option>
+      <option value="408">Burst Level 10</option>
+    </select>
+  
+<h3>Enter the desired talent level of the character</h3>
+
+    <label for="desiredNormalLevel">Basic attack level:</label>
+    <select id="desiredNormalLevel" name="desiredNormalLevel">
+      <option value="0">Basic Level 1</option>
+      <option value="3">Basic Level 2</option>
+      <option value="9">Basic Level 3</option>
+      <option value="21">Basic Level 4</option>
+      <option value="39">Basic Level 5</option>
+      <option value="66">Basic Level 6</option>
+      <option value="102">Basic Level 7</option>
+      <option value="156">Basic Level 8</option>
+      <option value="264">Basic Level 9</option>
+      <option value="408">Basic Level 10</option>
+    </select>
+ 
+
+
+    <label for="desiredSkillLevel">Skill level:</label>
+    <select id="desiredSkillLevel" name="desiredSkillLevel">
+      <option value="0">Skill Level 1</option>
+      <option value="3">Skill Level 2</option>
+      <option value="9">Skill Level 3</option>
+      <option value="21">Skill Level 4</option>
+      <option value="39">Skill Level 5</option>
+      <option value="66">Skill Level 6</option>
+      <option value="102">Skill Level 7</option>
+      <option value="156">Skill Level 8</option>
+      <option value="264">Skill Level 9</option>
+      <option value="408">Skill Level 10</option>
+    </select>
+ 
+
+  
+    <label for="desiredBurstLevel">Burst level:</label>
+    <select id="desiredBurstLevel" name="desiredBurstLevel">
+      <option value="0">Burst Level 1</option>
+      <option value="3">Burst Level 2</option>
+      <option value="9">Burst Level 3</option>
+      <option value="21">Burst Level 4</option>
+      <option value="39">Burst Level 5</option>
+      <option value="66">Burst Level 6</option>
+      <option value="102">Burst Level 7</option>
+      <option value="156">Burst Level 8</option>
+      <option value="264">Burst Level 9</option>
+      <option value="408">Burst Level 10</option>
+    </select>
+<br>
+<br>
+<br>
+    <button  id="calculateButton">Calculate</button>
+<br>
+<br>
+
+  </form>
+<br>
+<br>
+    </div>
+
+    <div id="result">
+
+<p id="talentValueResult"></p>
+<p id="talentValueMissing"></p>
+
+
+<p id="talentTime"> </p>
+<h3 id="talentTime2"></h3>
+
+<p id="levelTime"></p>
+<h3 id="levelTime2"></h3>
+
+<p id="time"></p>
+<h3 id="time2"></h3>
+    </div>
+</div>
+
+<!-- ---------------------------------THIS IS WHERE THE FUN BEGINS--------------------------------  -->
+<script>
+  function calculate(){
+   
+//Get all the values from the form
+  //get the vales relating to talent levels
+const commonHave = parseInt(document.getElementById('commonHave').value); // common material the user has already
+const uncommonHave = parseInt(document.getElementById('uncommonHave').value); // uncommon material the user has aready
+const rareHave = parseInt(document.getElementById('rareHave').value); // rare material the user has already
+
+
+const currentNormalLevel = parseInt(document.getElementById('currentNormalLevel').value); //chosen characters normal attack level
+const currentSkillLevel = parseInt(document.getElementById('currentSkillLevel').value);//chosen characters skill level
+const currentBurstLevel = parseInt(document.getElementById('currentBurstLevel').value);//chosen characters burst level
+const desiredNormalLevel = parseInt(document.getElementById('desiredNormalLevel').value);//chosen characters desired normal attack level
+const desiredSkillLevel = parseInt(document.getElementById('desiredSkillLevel').value);//chosen characters desired skill level
+const desiredBurstLevel = parseInt(document.getElementById('desiredBurstLevel').value);//chosen characters desired burst level
+
+
+  //get the values related to character level
+const currentLevel = parseInt(document.getElementById('currentLevel').value);//chosen characters current level
+const desiredLevel = parseInt(document.getElementById('desiredLevel').value);//chosen characters desired level
+
+
+
+//talent calculations 
+var totalValueHaveT;//the combined total value of all the talent materials the user currently has
+var totalValueNeedT;//the combined total value of all the talent materials the user currently needs
+
+
+
+totalValueHaveT = commonHave + (uncommonHave*3) + (rareHave*9) + currentNormalLevel + currentSkillLevel + currentBurstLevel;//adds up all the user currently has
+totalValueNeedT = desiredNormalLevel + desiredSkillLevel + desiredBurstLevel;//adds up all the user is currently needing in total
+
+
+
+
+var totalValueMissingT = totalValueNeedT - totalValueHaveT;//finds out how much the user is missing
+
+var totalTimeRequiredT = (totalValueMissingT/10.18) * 9600;
+
+var secondsT = totalTimeRequiredT % 60;//use this for display
+var mT = totalTimeRequiredT / 60;
+
+var minutesT = mT % 60;//use this for display
+var hT = mT / 60;
+
+var hoursT = hT % 24;//use this for display
+
+var daysT = hT / 24;//use this for display
+
+var overallDaysT = ~~daysT;
+var overallHoursT = ~~hoursT;
+var overallMinutesT = ~~minutesT;
+var overallSecondsT = ~~secondsT;
+
+//level calculations
+var missingLevel = desiredLevel - currentLevel;
+
+
+var totalTimeRequiredL = ((missingLevel/5)+1)* 19200;
+
+var secondsL = totalTimeRequiredL % 60;//use this for display
+var mL = totalTimeRequiredL / 60;
+
+var minutesL = mL % 60;//use this for display
+var hL = mL / 60;
+
+var hoursL = hL % 24;//use this for display
+var daysL = hL / 24;//use this for display
+var overallDaysL = ~~daysL;
+var overallHoursL = ~~hoursL;
+var overallMinutesL = ~~minutesL;
+var overallSecondsL = ~~secondsL;
+
+
+//final calulation
+var totalTimeRequired = totalTimeRequiredL + totalTimeRequiredT;
+
+var seconds = totalTimeRequired % 60;//use this for display
+var m = totalTimeRequired / 60;
+
+var minutes = m % 60;//use this for display
+var h = m / 60;
+
+var hours = h % 24;//use this for display
+var days = h / 24;//use this for display
+var overallDays = ~~days;
+var overallHours = ~~hours;
+var overallMinutes = ~~minutes;
+var overallSeconds = ~~seconds;
+//output to webpage
+
+  document.getElementById("talentValueResult").innerHTML = "You have currently gathered talent material to a total of " + totalValueHaveT + " value";
+  document.getElementById("talentValueMissing").innerHTML = "You are still missing talent material to a total of " +totalValueMissingT+ " value";
+
+
+  document.getElementById("talentTime").innerHTML = "Getting your chosen character talents to your desired level will take:";
+  document.getElementById("talentTime2").innerHTML = overallDaysT + " days, " + overallHoursT + " hours, " + overallMinutesT + " minutes and " + overallSecondsT + " seconds";
+  
+  document.getElementById("levelTime").innerHTML = "Getting your chosen character's level to your desired level will take:";
+  document.getElementById("levelTime2").innerHTML = overallDaysL + " days, " + overallHoursL + " hours, " + overallMinutesL + " minutes and " + overallSecondsL + " seconds";
+
+  document.getElementById("time").innerHTML = "Overall leveling up your character will take:";
+  document.getElementById("time2").innerHTML = overallDays + " days, " + overallHours + " hours, " + overallMinutes + " minutes and " + overallSeconds + " seconds";
+
+return false;
+}
+
+calculateButton.addEventListener('click', () => {
+    calculate();
+  });
+
+
+</script>
+
+
+</body>
+</html>

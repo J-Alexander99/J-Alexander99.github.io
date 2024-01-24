@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifact Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('images/furinaWallpaper.png');
+            /* Replace with your background image path */
+            background-size: cover;
+            background-attachment: fixed;
+            /* Fixed background image */
+            color: aliceblue;
+        }
+
+        .character-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Translucent white background */
+        }
+
+        .column {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .character-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .attribute-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+
+        .filter-container {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Translucent white background */
+
+        }
+
+
+
+
+
+
+
+        #weapon-type-filter,
+        #element-filter,
+        #artifact-set-filter,
+        #sands-filter,
+        #goblet-filter,
+        #circlet-filter {
+            display: inline-block;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 4px;
+            color: white;
+            font-size: 130%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+                0 1px 1px rgba(128, 128, 128, 0.155),
+                0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+                0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+                0 12px 12px rgba(128, 128, 128, 0.35);
+
+            h1 {
+                margin: 0 0 24px 0;
+            }
+
+            .form-input-material {
+                margin: 12px 0;
+            }
+
+        }
+
+        #title {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <a href="index.html"><img src="images/genahinArtifactDatabase.webp" alt="genshin programs" height="100"
+                width="1200"></a>
+    </div>
+
+
+
+    <!-- Filtering options -->
+    <div class="filter-container">
+        <label for="element-filter">Select Element:</label>
+        <select id="element-filter">
+            <option value="">All</option>
+            <option value="Pyro">Pyro</option>
+            <option value="Hydro">Hydro</option>
+            <option value="Anemo">Anemo</option>
+            <option value="Electro">Electro</option>
+            <option value="Dendro">Dendro</option>
+            <option value="Cryo">Cryo</option>
+            <option value="Geo">Geo</option>
+            <!-- Add more element options as needed -->
+        </select>
+
+        <label for="weapon-type-filter">Select Weapon Type:</label>
+        <select id="weapon-type-filter">
+            <option value="">All</option>
+            <option value="Sword">Sword</option>
+            <option value="Claymore">Claymore</option>
+            <option value="Polearm">Polearm</option>
+            <option value="Catalyst">Catalyst</option>
+            <option value="Bow">Bow</option>
+            <!-- Add more weapon type options as needed -->
+        </select>
+
+        <label for="artifact-set-filter">Select Artifact Set:</label>
+        <select id="artifact-set-filter">
+            <option value="">All</option>
+            <option value="Gladiators Finale">Gladiator's Finale</option>
+            <option value="Wanderers Troupe">Wanderer's Troupe</option>
+            <option value="Noblesse Oblige">Noblesse Oblige</option>
+            <option value="Bloodstained Chivalry">Bow</option>
+            <option value="Maiden Beloved">Maiden Beloved</option>
+            <option value="Viridescent Venerer">Viridescent Venerer</option>
+            <option value="Archaic Petra">Archaic Petra</option>
+            <option value="Retracing Bolide">Retracing Bolide</option>
+            <option value="Thundersoother">Thundersoother</option>
+            <option value="Thundering Fury">Thundering Fury</option>
+            <option value="Lavawalker">Lavawalker</option>
+            <option value="Crimson Witch of Flames">Crimson Witch of Flames</option>
+            <option value="Blizzard Strayer">Blizzard Strayer</option>
+            <option value="Heart of Depth">Heart of Depth</option>
+            <option value="Tenacity of the Millelith">Tenacity of the Millelith</option>
+            <option value="Pale Flame">Pale Flame</option>
+            <option value="Shimenawas Reminiscence">Shimenawa's Reminiscence</option>
+            <option value="Emblem of Severed Fate">Emblem of Severed Fate</option>
+            <option value="Husk of Opulent Dreams">Husk of Opulent Dreams</option>
+            <option value="Ocean-Hued Clam">Ocean-Hued Clam</option>
+            <option value="Vermillion Hereafter">Vermillion Hereafter</option>
+            <option value="Echoes of an Offering">Echoes of an Offering</option>
+            <option value="Deepwood Memories">Deepwood Memories</option>
+            <option value="Gilded Dreams">Gilded Dreams</option>
+            <option value="Desert Pavilion Chronicle">Desert Pavilion Chronicle</option>
+            <option value="Flower of Paradise Lost">Flower of Paradise Lost</option>
+            <option value="Nymphs Dream">Nymph's Dream</option>
+            <option value="Vourukashas Glow">Vourukasha's Glow</option>
+            <option value="Marechaussee Hunter">Marechaussee Hunter</option>
+            <option value="Golden Troupe">Golden Troupe</option>
+            <!-- Add more artifact set options as needed -->
+        </select>
+
+        <label for="sands-filter">Select Sands:</label>
+        <select id="sands-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="ER%">ER%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="EM">EM</option>
+            <!-- Add more Sands options as needed -->
+        </select>
+
+        <label for="goblet-filter">Select Goblet:</label>
+        <select id="goblet-filter">
+            <option value="">All</option>
+            <option value="HP%">HP%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="EM">EM</option>
+            <option value="DEF%">DEF%</option>
+            <option value="PhysicalDMG">Physical%</option>
+            <option value="PyroDMG">Pyro%</option>
+            <option value="HydroDMG">Hydro%</option>
+            <option value="AnemoDMG">Anemo%</option>
+            <option value="ElectroDMG">Electro%</option>
+            <option value="DendroDMG">Dendro%</option>
+            <option value="CryoDMG">Cryo%</option>
+            <option value="GeoDMG">Geo%</option>
+            <!-- Add more Goblet options as needed -->
+        </select>
+
+        <label for="circlet-filter">Select Circlet:</label>
+        <select id="circlet-filter">
+            <option value="">All</option>
+            <option value="CRIT%">Crit Rate/DMG</option>
+            <option value="Crit DMG">Crit DMG</option>
+            <option value="Crit Rate">Crit Rate</option>
+            <option value="HP%">HP%</option>
+            <option value="ATK%">ATK%</option>
+            <option value="DEF%">DEF%</option>
+            <option value="EM">EM</option>
+            <option value="Healing Bonus%">Healing Bonus%</option>
+            <!-- Add more Circlet options as needed -->
+        </select>
+
+
+    </div>
+
+    <!-- Character list -->
+    <div class="character-container" id="character-list">
+        <!-- Example Character Entry 1 -->
+        <div class="character-container">
+            <div class="column">
+                <h2>Character Name 1</h2>
+                <img class="character-image" src="character_image_1.jpg" alt="Character Image 1">
+            </div>
+            <div class="column">
+                <h3>Element</h3>
+                <img class="attribute-image" src="element_image_1.jpg" alt="Element Image 1">
+                <p>Anemo</p>
+
+                <h3>Weapon Type</h3>
+                <img class="attribute-image" src="weapon_type_image_1.jpg" alt="Weapon Type Image 1">
+                <p>Sword</p>
+
+                <h3>Sands</h3>
+                <img class="attribute-image" src="sands_image_1.jpg" alt="Sands Image 1">
+                <p>HP</p>
+
+                <h3>Goblet</h3>
+                <img class="attribute-image" src="goblet_image_1.jpg" alt="Goblet Image 1">
+                <p>Attack%</p>
+
+                <h3>Circlet</h3>
+                <img class="attribute-image" src="circlet_image_1.jpg" alt="Circlet Image 1">
+                <p>Crit Rate</p>
+            </div>
+            <div class="column">
+                <h3>Artifact Set</h3>
+                <img class="attribute-image" src="artifact_image_1.jpg" alt="Artifact Image 1">
+                <p>Gladiator's Finale</p>
+
+                <h3>SubStats</h3>
+                <p>SubStat 1: Value</p>
+                <p>SubStat 2: Value</p>
+                <p>SubStat 3: Value</p>
+                <p>SubStat 4: Value</p>
+            </div>
+        </div>
+
+        <!-- Example Character Entry 2 (Pretty sure this does nothing) -->
+        <div class="character-container">
+            <div class="column">
+                <h2>Character Name 2</h2>
+                <img class="character-image" src="character_image_2.jpg" alt="Character Image 2">
+            </div>
+            <div class="column">
+                <h3>Element</h3>
+                <img class="attribute-image" src="element_image_2.jpg" alt="Element Image 2">
+                <p>Geo</p>
+
+                <h3>Weapon Type</h3>
+                <img class="attribute-image" src="weapon_type_image_2.jpg" alt="Weapon Type Image 2">
+                <p>Bow</p>
+
+                <h3>Sands</h3>
+                <img class="attribute-image" src="sands_image_2.jpg" alt="Sands Image 2">
+                <p>ER%</p>
+
+                <h3>Goblet</h3>
+                <img class="attribute-image" src="goblet_image_2.jpg" alt="Goblet Image 2">
+                <p>HP</p>
+
+                <h3>Circlet</h3>
+                <img class="attribute-image" src="circlet_image_2.jpg" alt="Circlet Image 2">
+                <p>Crit DMG</p>
+            </div>
+            <div class="column">
+                <h3>Artifact Set</h3>
+                <img class="attribute-image" src="artifact_image_2.jpg" alt="Artifact Image 2">
+                <p>Wanderer's Troupe</p>
+
+                <h3>SubStats</h3>
+                <p>SubStat 1: Value</p>
+                <p>SubStat 2: Value</p>
+                <p>SubStat 3: Value</p>
+                <p>SubStat 4: Value</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add more character entries as needed -->
+
+    <script>
+        // Add event listeners to each dropdown menu
+        document.getElementById('element-filter').addEventListener('change', filterCharacters);
+        document.getElementById('weapon-type-filter').addEventListener('change', filterCharacters);
+        document.getElementById('artifact-set-filter').addEventListener('change', filterCharacters);
+        document.getElementById('sands-filter').addEventListener('change', filterCharacters);
+        document.getElementById('goblet-filter').addEventListener('change', filterCharacters);
+        document.getElementById('circlet-filter').addEventListener('change', filterCharacters);
+
+        // Initial character data (replace with your actual data)
+        const characters = [
+            {
+                name: 'Amber',
+                element: 'Pyro',
+                weaponType: 'Bow',
+                artifactSet: 'Wanderers Troupe',
+                sands: 'EM',
+                goblet: 'PyroDMG',
+                circlet: 'Crit DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit DMG\nSubStat 3: Crit ATK%\nSubStat 4: Crit Rate%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/amberIcon.jpg',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+            {
+                name: 'Barbara',
+                element: 'Hydro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Maiden Beloved',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'Healing Bonus',
+                textLine4: 'SubStat 1: HP%\nSubStat 2: ER\nSubStat 3: HP\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/baberaIcon.jpg',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Beidou',
+                element: 'Electro',
+                weaponType: 'Claymore',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/beidouIcon.jpg',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Bennett',
+                element: 'Pyro',
+                weaponType: 'Sword',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ER%',
+                goblet: 'Pyro DMG',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG%\nSubStat 4: Crit Rate%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/bennettIcon.webp',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Chongyun',
+                element: 'Cryo',
+                weaponType: 'Claymore',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit DMG\nSubStat 3: Crit Rate\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/chongyunIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Diluc',
+                element: 'Pyro',
+                weaponType: 'Claymore',
+                artifactSet: 'Crimson Witch of Flames',
+                sands: 'ATK%',
+                goblet: 'Pyro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: EM\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/dilucIcon.jpg',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Fischl',
+                element: 'Electro',
+                weaponType: 'Bow',
+                artifactSet: 'Golden Troupe',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/fischlIcon.jpg',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Jean',
+                element: 'Anemo',
+                weaponType: 'Sword',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/jeanIcon.jpg',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kaeya',
+                element: 'Cryo',
+                weaponType: 'Sword',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kaeyaIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Keqing',
+                element: 'Electro',
+                weaponType: 'Sword',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'ER%',
+                goblet: 'Electro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: EM\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/keqingIcon.jpg',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Lisa',
+                element: 'Electro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Thundering Fury',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: ER\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/lisaIcon.jpg',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Mona',
+                element: 'Hydro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ATK%',
+                goblet: 'Hydro DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/monaIcon.webp',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Ningguang',
+                element: 'Geo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Geo DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ningguangIcon.jpg',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Noelle',
+                element: 'Geo',
+                weaponType: 'Claymore',
+                artifactSet: 'Husk of Opulent Dreams',
+                sands: 'DEF%',
+                goblet: 'Geo DMG',
+                circlet: 'Crit Rate/DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: DEF%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/noelleIcon.jpg',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Qiqi',
+                element: 'Cryo',
+                weaponType: 'Sword',
+                artifactSet: 'Ocean-Hued Clam',
+                sands: 'ATK%',
+                goblet: 'ATK%',
+                circlet: 'ATK%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: ATK%\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/qiqiIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Razor',
+                element: 'Electro',
+                weaponType: 'Claymore',
+                artifactSet: 'Thundering Fury',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'Crit DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: ATK%\nSubStat 4: CRIT%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/razorIcon.jpg',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Sucrose',
+                element: 'Anemo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: EM\nSubStat 2: ER%\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/sucroseIcon.jpg',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Lumine (Anemo)',
+                element: 'Anemo',
+                weaponType: 'Sword',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/lumineAnemoIcon.png',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Lumine (Geo)',
+                element: 'Geo',
+                weaponType: 'Sword',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'ATK%',
+                goblet: 'Geo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit rate\nSubStat 3: ATK%\nSubStat 4: Crit DMG',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/lumineGeoIcon.jpg',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Venti',
+                element: 'Anemo',
+                weaponType: 'Bow',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ventiIcon.jpg',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Xiangling',
+                element: 'Pyro',
+                weaponType: 'Polearm',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'EM',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/xianglingIcon.jpg',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Xingqiu',
+                element: 'Hydro',
+                weaponType: 'Sword',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Hydro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/xingQiuIcon.jpg',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Klee',
+                element: 'Pyro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Crimson Witch of Flames',
+                sands: 'ATK%',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kleeIcon.png',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Diona',
+                element: 'Cryo',
+                weaponType: 'Bow',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'Healing Bonus',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG\nSubStat 4: HP',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/dionaIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Tartaglia',
+                element: 'Hydro',
+                weaponType: 'Bow',
+                artifactSet: 'Nymph\'s Dream',
+                sands: 'ATK%',
+                goblet: 'Hydro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: ATK%\nSubStat 4:ER%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/childeIcon.webp',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Xinyan',
+                element: 'Pyro',
+                weaponType: 'Claymore',
+                artifactSet: 'Pale Flame',
+                sands: 'ATK%',
+                goblet: 'Physical DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/xinyanIcon.jpg',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Zhongli',
+                element: 'Geo',
+                weaponType: 'Polearm',
+                artifactSet: 'Tenacity of the Millelith',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: HP%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: HP',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/zhongliIcon.jpg',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Albedo',
+                element: 'Geo',
+                weaponType: 'Sword',
+                artifactSet: 'Husk of Opulent Dreams',
+                sands: 'DEF%',
+                goblet: 'Geo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: DEF%\nSubStat 2: ER%\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/albedoIcon.png',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Ganyu',
+                element: 'Cryo',
+                weaponType: 'Bow',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'EM',
+                goblet: 'Cryo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: EM\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ganyuIcon.jpg',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Xiao',
+                element: 'Anemo',
+                weaponType: 'Polearm',
+                artifactSet: 'Vermillion Hereafter',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/xiaoIcon.png',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Hu Tao',
+                element: 'Pyro',
+                weaponType: 'Polearm',
+                artifactSet: 'Crimson Witch of Flames',
+                sands: 'HP%',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: HP%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/homa.gif',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Rosaria',
+                element: 'Cryo',
+                weaponType: 'Polearm',
+                artifactSet: 'Gilded Dreams',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/rosariaIcon.jpg',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yanfei',
+                element: 'Pyro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Gilded Dreams',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: EM\nSubStat 2: ER%\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yanfeiIcon.png',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Eula',
+                element: 'Cryo',
+                weaponType: 'Claymore',
+                artifactSet: 'Pale Flame',
+                sands: 'ATK%',
+                goblet: 'Physical DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/eulaIcon.webp',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kazuha',
+                element: 'Anemo',
+                weaponType: 'Sword',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kazuhaIcon.webp',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Ayaka',
+                element: 'Cryo',
+                weaponType: 'Sword',
+                artifactSet: 'Blizzard Strayer',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'Crit DMG',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit DMG\nSubStat 3: ATK%\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ayakaIcon.jpg',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Sayu',
+                element: 'Anemo',
+                weaponType: 'Claymore',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/sayuIcon.jpg',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yoimiya',
+                element: 'Pyro',
+                weaponType: 'Bow',
+                artifactSet: 'Shimenawa\'s Reminiscence',
+                sands: 'EM',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: Crit DMG\nSubStat 2: Crit Rate\nSubStat 3: EM\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yoimiyaIcon.png',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Aloy',
+                element: 'Cryo',
+                weaponType: 'Bow',
+                artifactSet: 'Wanderer\'s Troupe',
+                sands: 'EM',
+                goblet: 'Cryo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/aloyIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Sara',
+                element: 'Electro',
+                weaponType: 'Bow',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/saraIcon.png',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Raiden',
+                element: 'Electro',
+                weaponType: 'Polearm',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ER%',
+                goblet: 'Electro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/raidenIcon.png',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kokomi',
+                element: 'Hydro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Ocean-Hued Clam',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: HP\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kokomiIcon.png',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Thoma',
+                element: 'Pyro',
+                weaponType: 'Polearm',
+                artifactSet: 'Gilded Dreams',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/thomaIcon.jpg',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Itto',
+                element: 'Geo',
+                weaponType: 'Claymore',
+                artifactSet: 'Husk of Opulent Dreams',
+                sands: 'DEF%',
+                goblet: 'Geo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: DEF%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ittoIcon.jpg',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Gorou',
+                element: 'Geo',
+                weaponType: 'Bow',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ER%',
+                goblet: 'Geo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/gorouIcon.webp',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Shenhe',
+                element: 'Cryo',
+                weaponType: 'Polearm',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ATK%',
+                goblet: 'ATK%',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: ATK%\nSubStat 3: Crit DMG\nSubStat 4: Crit Rate',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/shenheIcon.gif',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yun Jin',
+                element: 'Geo',
+                weaponType: 'Polearm',
+                artifactSet: 'Husk of Opulent Dreams',
+                sands: 'DEF%',
+                goblet: 'DEF%',
+                circlet: 'DEF%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: DEF%\nSubStat 3: DEF\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yunjinIcon.png',
+                    element: 'contents/icons/geo.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yae Miko',
+                element: 'Electro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Electro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yaemikoIcon.gif',
+                    element: 'contents/icons/eletro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Ayato',
+                element: 'Hydro',
+                weaponType: 'Sword',
+                artifactSet: 'Heart of Depth',
+                sands: 'ATK%',
+                goblet: 'Hydro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/ayatoIcon.png',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yelan',
+                element: 'Hydro',
+                weaponType: 'Bow',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Hydro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yelanIcon.png',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kuki',
+                element: 'Electro',
+                weaponType: 'Sword',
+                artifactSet: 'Flower of Paradise Lost',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kukiIcon.png',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Heizou',
+                element: 'Anemo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/heizouIcon.jpg',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Dori',
+                element: 'Electro',
+                weaponType: 'Claymore',
+                artifactSet: 'Gilded Dreams',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: HP%\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/doriIcon.png',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Collei',
+                element: 'Dendro',
+                weaponType: 'Bow',
+                artifactSet: 'Gilded Dreams',
+                sands: 'ER%',
+                goblet: 'Dendro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/colleiIcon.jpg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Tighnari',
+                element: 'Dendro',
+                weaponType: 'Bow',
+                artifactSet: 'Gilded Dreams',
+                sands: 'ER%',
+                goblet: 'Dendro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/tfix.jpeg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Candace',
+                element: 'Hydro',
+                weaponType: 'Polearm',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'HP%',
+                goblet: 'Hydro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/candaceIcon.png',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Cyno',
+                element: 'Electro',
+                weaponType: 'Polearm',
+                artifactSet: 'Thundering Fury',
+                sands: 'EM',
+                goblet: 'Electro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/cynoIcon.png',
+                    element: 'contents/icons/electro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Nilou',
+                element: 'Hydro',
+                weaponType: 'Sword',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: HP%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/nilouIcon.webp',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Nahida',
+                element: 'Dendro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Deepwood Memories',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/nahidaIcon.jpg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Layla',
+                element: 'Cryo',
+                weaponType: 'Sword',
+                artifactSet: 'Tenacity of the Millelith',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/laylaIcon.jpg',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Faruzan',
+                element: 'Anemo',
+                weaponType: 'Bow',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ER%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/faruzanIcon.png',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Wanderer',
+                element: 'Anemo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Desert Pavilion Chronicle',
+                sands: 'ATK%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/wandererIcon.webp',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: ' Alhaitham',
+                element: 'Dendro',
+                weaponType: 'Sword',
+                artifactSet: 'Gilded Dreams',
+                sands: 'EM',
+                goblet: 'Dendro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/alhaithamIcon.jpg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Yaoyao',
+                element: 'Dendro',
+                weaponType: 'Polearm',
+                artifactSet: 'Deepwood Memories',
+                sands: 'ER%',
+                goblet: 'HP%',
+                circlet: 'Healing Bonus',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/yaoyaoIcon.png',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/polearm.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Dehya',
+                element: 'Pyro',
+                weaponType: 'Claymore',
+                artifactSet: 'Emblem of Severed Fate',
+                sands: 'ATK%',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/dehyaIcon.png',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+
+            {
+                name: 'Mika',
+                element: 'Cryo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ER%',
+                goblet: 'HP%',
+                circlet: 'Crit Rate',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: HP%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/mikaIcon.webp',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Baizhu',
+                element: 'Dendro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Deepwood Memories',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: HP\nSubStat 4: EM',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/baizhuIcon.jpg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kaveh',
+                element: 'Dendro',
+                weaponType: 'Claymore',
+                artifactSet: 'Deepwood Memories',
+                sands: 'EM',
+                goblet: 'EM',
+                circlet: 'EM',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: EM\nSubStat 3: HP%\nSubStat 4: HP',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kavehIcon.png',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Kirara',
+                element: 'Dendro',
+                weaponType: 'Sword',
+                artifactSet: 'Tenacity of the Millelith',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'HP%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: HP%\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/kiraraIcon.jpg',
+                    element: 'contents/icons/dendro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Freminet',
+                element: 'Cryo',
+                weaponType: 'Claymore',
+                artifactSet: 'Golden Troupe',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/freminetIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/claymore.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Lynette',
+                element: 'Anemo',
+                weaponType: 'Sword',
+                artifactSet: 'Viridescent Venerer',
+                sands: 'ER%',
+                goblet: 'Anemo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/lynetteIcon.png',
+                    element: 'contents/icons/anemo.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Lyney',
+                element: 'Pyro',
+                weaponType: 'Bow',
+                artifactSet: 'Marechaussee Hunter',
+                sands: 'ATK%',
+                goblet: 'Pyro DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/lyneyIcon.webp',
+                    element: 'contents/icons/pyro.svg',
+                    weaponType: 'contents/icons/bow.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Neuvillette',
+                element: 'Hydro',
+                weaponType: 'Catalyst',
+                artifactSet: 'Marechaussee Hunter',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/neuvilletteIcon.jpeg',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Wriothesley',
+                element: 'Cryo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Marechaussee Hunter',
+                sands: 'ATK%',
+                goblet: 'Cryo DMG',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/wriothesleyIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Charlotte',
+                element: 'Cryo',
+                weaponType: 'Catalyst',
+                artifactSet: 'Noblesse Oblige',
+                sands: 'ER%',
+                goblet: 'Cryo DMG',
+                circlet: 'Healing Bonus',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'contents/charlotteIcon.png',
+                    element: 'contents/icons/cryo.svg',
+                    weaponType: 'contents/icons/catalyst.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+
+            {
+                name: 'Furina',
+                element: 'Hydro',
+                weaponType: 'Sword',
+                artifactSet: 'Golden Troupe',
+                sands: 'HP%',
+                goblet: 'HP%',
+                circlet: 'CRIT%',
+                textLine4: 'SubStat 1: ER%\nSubStat 2: Crit Rate\nSubStat 3: Crit DMG\nSubStat 4: ATK%',
+                // Add image paths for each attribute
+                images: {
+                    character: 'images/furina.jpg',
+                    element: 'contents/icons/hydro.svg',
+                    weaponType: 'contents/icons/sword.webp',
+                    sands: 'contents/icons/sands.webp',
+                    goblet: 'contents/icons/goblet.webp',
+                    circlet: 'contents/icons/circlet.webp',
+                    artifactSet: 'contents/icons/wanderersTrope.png',
+                },
+            },
+            // Add more character data as needed
+        ];
+
+        // Initial rendering of characters
+        renderCharacters(characters);
+
+        // Function to filter and render characters based on user selections
+        function filterCharacters() {
+            const elementFilter = document.getElementById('element-filter').value;
+            const weaponTypeFilter = document.getElementById('weapon-type-filter').value;
+            const artifactSetFilter = document.getElementById('artifact-set-filter').value;
+            const sandsFilter = document.getElementById('sands-filter').value;
+            const gobletFilter = document.getElementById('goblet-filter').value;
+            const circletFilter = document.getElementById('circlet-filter').value;
+
+            const characterContainer = document.getElementById('character-list');
+            characterContainer.style.opacity = '0'; // Set opacity to 0 before filtering
+
+            setTimeout(() => {
+                const filteredCharacters = characters.filter(character => {
+                    return (
+                        (elementFilter === '' || character.element === elementFilter) &&
+                        (weaponTypeFilter === '' || character.weaponType === weaponTypeFilter) &&
+                        (artifactSetFilter === '' || character.artifactSet === artifactSetFilter) &&
+                        (sandsFilter === '' || character.sands === sandsFilter) &&
+                        (gobletFilter === '' || character.goblet === gobletFilter) &&
+                        (circletFilter === '' || character.circlet === circletFilter)
+                    );
+                });
+
+                renderCharacters(filteredCharacters);
+                characterContainer.style.opacity = '1'; // Set opacity back to 1 after filtering
+            }, 500); // Adjust the timeout value to match the transition duration
+        }
+
+        // Function to render characters in the character container
+        function renderCharacters(charactersToRender) {
+            const characterContainer = document.getElementById('character-list');
+            characterContainer.innerHTML = '';
+
+            charactersToRender.forEach(character => {
+                const characterDiv = document.createElement('div');
+                characterDiv.classList.add('character-container');
+
+                // Create elements for the character entry (similar to the existing structure)
+                const nameElement = document.createElement('h2');
+                nameElement.textContent = character.name;
+
+                const characterImage = document.createElement('img');
+                characterImage.classList.add('character-image');
+                characterImage.src = character.images.character; // Use character image path
+                characterImage.alt = `Character Image ${character.name}`;
+
+                const elementSection = createAttributeSection('Element', character.images.element, character.element);
+                const weaponTypeSection = createAttributeSection('Weapon Type', character.images.weaponType, character.weaponType);
+                const sandsSection = createAttributeSection('Sands', character.images.sands, character.sands);
+                const gobletSection = createAttributeSection('Goblet', character.images.goblet, character.goblet);
+                const circletSection = createAttributeSection('Circlet', character.images.circlet, character.circlet);
+                const artifactSetSection = createAttributeSection('Artifact Set', character.images.artifactSet, character.artifactSet);
+
+                const textSection = document.createElement('div');
+                textSection.classList.add('column');
+                textSection.innerHTML = `
+                <h3>Substats</h3>
+                <p>${character.textLine4}</p>
+            `;
+
+                // Append elements to the character entry
+                characterDiv.appendChild(nameElement);
+                characterDiv.appendChild(characterImage);
+                characterDiv.appendChild(elementSection);
+                characterDiv.appendChild(weaponTypeSection);
+                characterDiv.appendChild(sandsSection);
+                characterDiv.appendChild(gobletSection);
+                characterDiv.appendChild(circletSection);
+                characterDiv.appendChild(artifactSetSection);
+                characterDiv.appendChild(textSection);
+
+                // Append the character entry to the character container
+                characterContainer.appendChild(characterDiv);
+            });
+        }
+
+        // Helper function to create attribute sections
+        function createAttributeSection(attributeName, imagePath, attributeValue) {
+            const attributeSection = document.createElement('div');
+            attributeSection.classList.add('column');
+            attributeSection.innerHTML = `
+            <h3>${attributeName}</h3>
+            <img class="attribute-image" src="${imagePath}" alt="${attributeName} Image">
+            <p>${attributeValue}</p>
+        `;
+            return attributeSection;
+        }
+    </script>
+
+
+</body>
+
+</html>
