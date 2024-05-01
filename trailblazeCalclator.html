@@ -1,308 +1,973 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <!-- TEST-->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--TEST-->
-<title>Resin Calculator</title>
-<link rel="stylesheet" href="style2.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trailblaze Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)),
+
+        url("images/indexBackground.jpeg");
+      background-size: cover;
+
+
+    }
+
+    header {
+      background-color: #33333374;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    section {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    #user-has,
+    #user-needs,
+    #results {
+      flex-basis: calc(33.33% - 20px);
+      box-sizing: border-box;
+    }
+
+    #user-has,
+    #user-needs {
+      color: #fff;
+
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    #results {
+      background-color: #333;
+      color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    form {
+      margin-top: 20px;
+      display: inline-block;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px 4px;
+      color: white;
+      font-size: 130%;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        0 1px 1px rgba(128, 128, 128, 0.155),
+        0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+        0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+        0 12px 12px rgba(128, 128, 128, 0.35);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select,
+    input[type="checkbox"] {
+      margin-bottom: 10px;
+      display: inline-block;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px 4px;
+      color: white;
+      font-size: 130%;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        0 1px 1px rgba(128, 128, 128, 0.155),
+        0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+        0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+        0 12px 12px rgba(128, 128, 128, 0.35);
+    }
+
+
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #555;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .input-group-item {
+      flex-basis: 50%;
+    }
+
+
+    /* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #646464;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #646464;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  </style>
 </head>
+
 <body>
-<div id="mainhead">
-<a href="index.html"><img src="images/trailblazeCalculator2.png" alt="genshin programs" height="100" width="1200"></a>
-
-<p>This tool is designed to calculate how long it takes to get enough Trailblaze to upgrade a character </p>
-<p>Simply enter the required information into the boxes below to continue..</p>
-</div>
-<div id="contentbit">
-    <div id="gather">
-
-<form class="login-form" action="javascript:void(0);">
-    
-    <label for="currentLevel">Enter the characters current level:</label>
-    <select id="currentLevel" name="currentLevel">
-      <option value="0">Level 1-40</option>
-      <option value="2">Level 40-50</option>
-      <option value="6">Level 50-60</option>
-      <option value="14">Level 60-70</option>
-      <option value="26">Level 70-80</option>
-      <option value="46">Level 80-90</option>
-    </select>
-
-
-
-    <label for="desiredLevel">Enter the characters desired level:</label>
-    <select id="desiredLevel" name="desiredLevel">
-      <option value="2">Level 40-50</option>
-      <option value="6">Level 50-60</option>
-      <option value="14">Level 60-70</option>
-      <option value="26">Level 70-80</option>
-      <option value="46">Level 80-90</option>
-    </select>
-<br>
-<br>
-
-
-
-
-    <label for="commonHave">Enter the amount of common talent material you currently have:</label>
-    <input type="number" id="commonHave" name="commonHave">
-<br>
-<br>
-
- 
-    <label for="uncommonHave">Enter the amount of uncommon talent material you currently have:</label>
-    <input type="number" id="uncommonHave" name="uncommonHave">
- <br>
- <br>
-
-
-    <label for="rareHave">Enter the amount of rare talent material you currently have:</label>
-    <input type="number" id="rareHave" name="rareHave">
-<br>
-
-
-<h3>Enter the current talent level of the characters:</h3>
-
-    <label for="currentNormalLevel">Basic attack level:</label>
-    <select id="currentNormalLevel" name="currentNormalLevel">
-      <option value="0">Basic Level 1</option>
-      <option value="3">Basic Level 2</option>
-      <option value="9">Basic Level 3</option>
-      <option value="21">Basic Level 4</option>
-      <option value="39">Basic Level 5</option>
-      <option value="66">Basic Level 6</option>
-      <option value="102">Basic Level 7</option>
-      <option value="156">Basic Level 8</option>
-      <option value="264">Basic Level 9</option>
-      <option value="408">Basic Level 10</option>
-    </select>
-
-
-
-    <label for="currentSkillLevel">Skill level:</label>
-    <select id="currentSkillLevel" name="currentSkillLevel">
-      <option value="0">Skill Level 1</option>
-      <option value="3">Skill Level 2</option>
-      <option value="9">Skill Level 3</option>
-      <option value="21">Skill Level 4</option>
-      <option value="39">Skill Level 5</option>
-      <option value="66">Skill Level 6</option>
-      <option value="102">Skill Level 7</option>
-      <option value="156">Skill Level 8</option>
-      <option value="264">Skill Level 9</option>
-      <option value="408">Skill Level 10</option>
-    </select>
- 
-
-    <label for="currentBurstLevel">Burst level:</label>
-    <select id="currentBurstLevel" name="currentBurstLevel">
-      <option value="0">Burst Level 1</option>
-      <option value="3">Burst Level 2</option>
-      <option value="9">Burst Level 3</option>
-      <option value="21">Burst Level 4</option>
-      <option value="39">Burst Level 5</option>
-      <option value="66">Burst Level 6</option>
-      <option value="102">Burst Level 7</option>
-      <option value="156">Burst Level 8</option>
-      <option value="264">Burst Level 9</option>
-      <option value="408">Burst Level 10</option>
-    </select>
-  
-<h3>Enter the desired talent level of the character</h3>
-
-    <label for="desiredNormalLevel">Basic attack level:</label>
-    <select id="desiredNormalLevel" name="desiredNormalLevel">
-      <option value="0">Basic Level 1</option>
-      <option value="3">Basic Level 2</option>
-      <option value="9">Basic Level 3</option>
-      <option value="21">Basic Level 4</option>
-      <option value="39">Basic Level 5</option>
-      <option value="66">Basic Level 6</option>
-      <option value="102">Basic Level 7</option>
-      <option value="156">Basic Level 8</option>
-      <option value="264">Basic Level 9</option>
-      <option value="408">Basic Level 10</option>
-    </select>
- 
-
-
-    <label for="desiredSkillLevel">Skill level:</label>
-    <select id="desiredSkillLevel" name="desiredSkillLevel">
-      <option value="0">Skill Level 1</option>
-      <option value="3">Skill Level 2</option>
-      <option value="9">Skill Level 3</option>
-      <option value="21">Skill Level 4</option>
-      <option value="39">Skill Level 5</option>
-      <option value="66">Skill Level 6</option>
-      <option value="102">Skill Level 7</option>
-      <option value="156">Skill Level 8</option>
-      <option value="264">Skill Level 9</option>
-      <option value="408">Skill Level 10</option>
-    </select>
- 
-
-  
-    <label for="desiredBurstLevel">Burst level:</label>
-    <select id="desiredBurstLevel" name="desiredBurstLevel">
-      <option value="0">Burst Level 1</option>
-      <option value="3">Burst Level 2</option>
-      <option value="9">Burst Level 3</option>
-      <option value="21">Burst Level 4</option>
-      <option value="39">Burst Level 5</option>
-      <option value="66">Burst Level 6</option>
-      <option value="102">Burst Level 7</option>
-      <option value="156">Burst Level 8</option>
-      <option value="264">Burst Level 9</option>
-      <option value="408">Burst Level 10</option>
-    </select>
-<br>
-<br>
-<br>
-    <button onclick="test()" id="calculateButton">Calculate</button>
-<br>
-<br>
+  <header>
+    <h1>Trailblaze Calculator</h1>
+    <p>The switch should be <b>Light</b> for building 5-star characters and <b>dark</b> for building 4-star characters
+    </p>
+
+    <!-- Rounded switch -->
+    <label class="switch">
+      <input type="checkbox" id="switch-checkbox">
+      <span class="slider round"></span>
+    </label>
+
+  </header>
+
+  <main>
+    <section>
+      <div id="user-needs">
+        <h2>User Needs</h2>
+        <form id="user-needs-form">
+          <label for="totalCommon">Total saved common materials:</label>
+          <input type="number" id="totalCommon" name="totalCommon" min="0" step="1">
+          <br>
+
+          <label for="totalUncommon">Total saved uncommon materials:</label>
+          <input type="number" id="totalUncommon" name="totalUncommon" min="0" step="1">
+          <br>
+
+          <label for="totalRare">Total saved rare materials:</label>
+          <input type="number" id="totalRare" name="totalRare" min="0" step="1">
+          <br>
+          <label for="character-levelHave">Select the current character level:</label>
+          <select id="character-levelHave" name="character-levelHave">
+            <!-- Options from 1 to 10 -->
+            <script>
+              const characterLevels = ["0-0", "0-0", "0-0", "3-2", "7-5", "20-15", "35-28"];
+              const characterLabels = ["0-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80"];
+
+              characterLevels.forEach((level, index) => {
+                const label = characterLabels[index];
+                document.write(`<option value="${level}">${label}</option>`);
+              });
+            </script>
+          </select>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="character-skillHave">Select the current character skill:</label>
+              <select id="character-skillHave" name="character-skillHave">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+
+              </select>
+            </div>
+
+            <div class="input-group-item">
+              <label for="character-talentHave">Select the current character talent:</label>
+              <select id="character-talentHave" name="character-talentHave">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  //const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="character-ultimateHave">Select the current character ultimate:</label>
+              <select id="character-ultimateHave" name="character-ultimateHave">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  //const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+
+            <div class="input-group-item">
+              <label for="character-basicHave">Select the <b>desired</b> character basic:</label>
+              <select id="character-basicHave" name="character-basicHave">
+                <!-- Options from 1 to 6 -->
+                <script>
+                  const basicLevels = ["3-2", "9-6", "15-12", "27-18", "72-54"];
+
+                  basicLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="additional-skill-1Have">Additional Skill 1:</label>
+              <input type="checkbox" id="additional-skill-1Have" name="additional-skill-1Have" value="3-2">
+            </div>
+
+            <div class="input-group-item">
+              <label for="additional-skill-2Have">Additional Skill 2:</label>
+              <input type="checkbox" id="additional-skill-2Have" name="additional-skill-2Have" value="15-12">
+            </div>
+
+            <div class="input-group-item">
+              <label for="additional-skill-3Have">Additional Skill 3:</label>
+              <input type="checkbox" id="additional-skill-3Have" name="additional-skill-3Have" value="72-54">
+            </div>
+          </div>
+          <!-- Repeat similar code for stat buffs checkboxes -->
+          <!-- 10 stat buffs checkboxes -->
+          <fieldset>
+            <legend>Stat Buffs:</legend>
+            <script>
+              // Define an array of preset values for checkboxes
+              const presetValues = ["0-0", "3-2", "9-6", "9-6", "15-12", "27-18", "27-18", "72-54", "72-54", "72-54"];
+
+              // Loop through each preset value and create a checkbox
+              for (let i = 0; i < presetValues.length; i++) {
+                const value = presetValues[i];
+                document.write(`
+                      <label for="stat-buffHave-${i}">Stat Buff ${i + 1}:</label>
+                      <input type="checkbox" id="stat-buffHave-${i}" name="stat-buffHave-${i}" value="${value}">
+                  `);
+              }
+            </script>
+          </fieldset>
+          <br>
+
+          <!--<input type="submit" value="Submit"> -->
+        </form>
+      </div>
+
+      <div id="user-needs">
+        <h2>User Needs</h2>
+        <!-- Add content for user needs section -->
+        <form id="user-needs-form">
+          <label for="character-levelNeed">Select the current character level:</label>
+          <select id="character-levelNeed" name="character-levelNeed">
+            <!-- Options from 1 to 10 -->
+            <script>
+              characterLevels.forEach((level, index) => {
+                const label = characterLabels[index];
+                document.write(`<option value="${level}">${label}</option>`);
+              });
+            </script>
+          </select>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="character-skillNeed">Select the <b>desired</b> character skill:</label>
+              <select id="character-skillNeed" name="character-skillNeed">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  //const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+
+            <div class="input-group-item">
+              <label for="character-talentNeed">Select the <b>desired</b> character talent:</label>
+              <select id="character-talentNeed" name="character-talentNeed">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  //const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="character-ultimateNeed">Select the <b>desired</b> character ultimate:</label>
+              <select id="character-ultimateNeed" name="character-ultimateNeed">
+                <!-- Options from 1 to 10 -->
+                <script>
+                  //const skillLevels = ["0-0", "3-2", "9-6", "15-12", "21-18", "27-18", "45-36", "72-54", "126-99"];
+
+                  skillLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+
+            <div class="input-group-item">
+              <label for="character-basicNeed">Select the <b>desired</b> character basic:</label>
+              <select id="character-basicNeed" name="character-basicNeed">
+                <!-- Options from 1 to 6 -->
+                <script>
+                  //const basicLevels = ["3-2", "9-6", "15-12", "27-18", "72-54"];
+
+                  basicLevels.forEach((level, index) => {
+                    document.write(`<option value="${level}">${index + 1}</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-item">
+              <label for="additional-skill-1Need">Additional Skill 1:</label>
+              <input type="checkbox" id="additional-skill-1Need" name="additional-skill-1Need" value="3-2">
+            </div>
+
+            <div class="input-group-item">
+              <label for="additional-skill-2Need">Additional Skill 2:</label>
+              <input type="checkbox" id="additional-skill-2Need" name="additional-skill-2Need" value="15-12">
+            </div>
+
+            <div class="input-group-item">
+              <label for="additional-skill-3Need">Additional Skill 3:</label>
+              <input type="checkbox" id="additional-skill-3Need" name="additional-skill-3Need" value="72-54">
+            </div>
+          </div>
+          <!-- Repeat similar code for stat buffs checkboxes -->
+          <!-- 10 stat buffs checkboxes -->
+          <fieldset>
+            <legend>Stat Buffs:</legend>
+            <script>
+              // Define an array of preset values for checkboxes
+              // const presetValues = [0 - 0, 3 - 2, 9 - 6, 9 - 6, 15 - 12, 27 - 18, 27 - 18, 72 - 54, 72 - 54, 72 - 54];
+
+              // Loop through each preset value and create a checkbox
+              for (let i = 0; i < presetValues.length; i++) {
+                const value = presetValues[i];
+                document.write(`
+                      <label for="stat-buffNeed-${i}">Stat Buff ${i + 1}:</label>
+                      <input type="checkbox" id="stat-buffNeed-${i}" name="stat-buffNeed-${i}" value="${value}">
+                  `);
+              }
+            </script>
+          </fieldset>
+          <br>
+
+
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div id="results">
+        <button type=button, id="calculateButton">Calculate</button>
+        <h2>Results</h2>
+        <p id="calculateResults"></p>
+        <p id="calculateResults2"></p>
+        <!-- Add content for results section -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+
+    calculateButton.addEventListener('click', () => {
+      calculate();
+    });
+
+    //THIS IS WHERE THE FUN BEGINS
+
+    // Function to save form data to variables
+    function calculate() {
+
+
+      var switchState = document.getElementById("switch-checkbox").checked;
+
+      // --------------------------------------HAVE SECTION-----------------------------------------
+      // Variables to store form data
+      var totalCommon = document.getElementById("totalCommon").value;
+      var totalUncommon = document.getElementById("totalUncommon").value;
+      var totalRare = document.getElementById("totalRare").value;
+      var characterLevelHave = document.getElementById("character-levelHave").value;
+      var characterSkillHave = document.getElementById("character-skillHave").value;
+      var characterTalentHave = document.getElementById("character-talentHave").value;
+      var characterUltimateHave = document.getElementById("character-ultimateHave").value;
+      var characterBasicHave = document.getElementById("character-basicHave").value;
+
+
+      // Variables to check if stat buffs are active
+      var additionalSkill1HaveBool = document.getElementById("additional-skill-1Have").checked;
+      var additionalSkill1Have;
+      if (additionalSkill1HaveBool == true) {
+        additionalSkill1Have = document.getElementById("additional-skill-1Have").value;
+      }
+      else {
+        additionalSkill1Have = "0-0";
+      }
+
+      var additionalSkill2HaveBool = document.getElementById("additional-skill-2Have").checked;
+      var additionalSkill2Have;
+      if (additionalSkill2HaveBool == true) {
+        additionalSkill2Have = document.getElementById("additional-skill-2Have").value;
+      } else {
+        additionalSkill2Have = "0-0";
+      }
+
+      var additionalSkill3HaveBool = document.getElementById("additional-skill-3Have").checked;
+      var additionalSkill3Have;
+      if (additionalSkill3HaveBool == true) {
+        additionalSkill3Have = document.getElementById("additional-skill-3Have").value;
+      } else {
+        additionalSkill3Have = "0-0";
+      }
+
+
+      var statBuff1HaveBool = document.getElementById("stat-buffHave-0").checked;
+      var statBuff2HaveBool = document.getElementById("stat-buffHave-1").checked;
+      var statBuff3HaveBool = document.getElementById("stat-buffHave-2").checked;
+      var statBuff4HaveBool = document.getElementById("stat-buffHave-3").checked;
+      var statBuff5HaveBool = document.getElementById("stat-buffHave-4").checked;
+      var statBuff6HaveBool = document.getElementById("stat-buffHave-5").checked;
+      var statBuff7HaveBool = document.getElementById("stat-buffHave-6").checked;
+      var statBuff8HaveBool = document.getElementById("stat-buffHave-7").checked;
+      var statBuff9HaveBool = document.getElementById("stat-buffHave-8").checked;
+      var statBuff10HaveBool = document.getElementById("stat-buffHave-9").checked;
+
+      var statBuff1Have;
+      if (statBuff1HaveBool == true) {
+        statBuff1Have = document.getElementById("stat-buffHave-0").value;
+      } else {
+        statBuff1Have = "0-0";
+      }
+      var statBuff2Have;
+      if (statBuff2HaveBool == true) {
+        statBuff2Have = document.getElementById("stat-buffHave-1").value;
+      } else {
+        statBuff2Have = "0-0";
+      }
+
+      var statBuff3Have;
+      if (statBuff3HaveBool == true) {
+        statBuff3Have = document.getElementById("stat-buffHave-2").value;
+      } else {
+        statBuff3Have = "0-0";
+      }
+
+      var statBuff4Have;
+      if (statBuff4HaveBool == true) {
+        statBuff4Have = document.getElementById("stat-buffHave-3").value;
+      } else {
+        statBuff4Have = "0-0";
+      }
+
+      var statBuff5Have;
+      if (statBuff5HaveBool == true) {
+        statBuff5Have = document.getElementById("stat-buffHave-4").value;
+      } else {
+        statBuff5Have = "0-0";
+      }
+
+      var statBuff6Have;
+      if (statBuff6HaveBool == true) {
+        statBuff6Have = document.getElementById("stat-buffHave-5").value;
+      } else {
+        statBuff6Have = "0-0";
+      }
+
+      var statBuff7Have;
+      if (statBuff7HaveBool == true) {
+        statBuff7Have = document.getElementById("stat-buffHave-6").value;
+      } else {
+        statBuff7Have = "0-0";
+      }
+
+      var statBuff8Have;
+      if (statBuff8HaveBool == true) {
+        statBuff8Have = document.getElementById("stat-buffHave-7").value;
+      } else {
+        statBuff8Have = "0-0";
+      }
+
+      var statBuff9Have;
+      if (statBuff9HaveBool == true) {
+        statBuff9Have = document.getElementById("stat-buffHave-8").value;
+      } else {
+        statBuff9Have = "0-0";
+      }
+
+      var statBuff10Have;
+      if (statBuff10HaveBool == true) {
+        statBuff10Have = document.getElementById("stat-buffHave-9").value;
+      } else {
+        statBuff10Have = "0-0";
+      }
+
+
+
+
+
+
+
+
+      // Log the values to check if they are saved correctly
+      console.log("Total Common: " + totalCommon);
+      console.log("Total Uncommon: " + totalUncommon);
+      console.log("Total Rare: " + totalRare);
+      console.log("Character Level Have: " + characterLevelHave);
+      console.log("Character Skill Have: " + characterSkillHave);
+      console.log("Character Talent Have: " + characterTalentHave);
+      console.log("Character Ultimate Have: " + characterUltimateHave);
+      console.log("Character Basic Have: " + characterBasicHave);
+      console.log("Additional Skill 1 Have: " + additionalSkill1Have);
+      console.log("Additional Skill 2 Have: " + additionalSkill2Have);
+      console.log("Additional Skill 3 Have: " + additionalSkill3Have);
+      console.log("Stat Buff 1 Have: " + statBuff1Have);
+      console.log("Stat Buff 2 Have: " + statBuff2Have);
+      console.log("Stat Buff 3 Have: " + statBuff3Have);
+      console.log("Stat Buff 4 Have: " + statBuff4Have);
+      console.log("Stat Buff 5 Have: " + statBuff5Have);
+      console.log("Stat Buff 6 Have: " + statBuff6Have);
+      console.log("Stat Buff 7 Have: " + statBuff7Have);
+      console.log("Stat Buff 8 Have: " + statBuff8Have);
+      console.log("Stat Buff 9 Have: " + statBuff9Have);
+      console.log("Stat Buff 10 Have: " + statBuff10Have);
+
+
+
+
+      //------------------------------------------------NEED SECTION-----------------------------------------
+
+      var characterLevelNeed = document.getElementById("character-levelNeed").value;
+      var characterSkillNeed = document.getElementById("character-skillNeed").value;
+      var characterTalentNeed = document.getElementById("character-talentNeed").value;
+      var characterUltimateNeed = document.getElementById("character-ultimateNeed").value;
+      var characterBasicNeed = document.getElementById("character-basicNeed").value;
+      var additionalSkill1Need = document.getElementById("additional-skill-1Need").checked;
+      var additionalSkill2Need = document.getElementById("additional-skill-2Need").checked;
+      var additionalSkill3Need = document.getElementById("additional-skill-3Need").checked;
+
+      // Variables to check if stat buffs are active
+      var additionalSkill1NeedBool = document.getElementById("additional-skill-1Need").checked;
+      var additionalSkill1Need;
+      if (additionalSkill1NeedBool == true) {
+        additionalSkill1Need = document.getElementById("additional-skill-1Need").value;
+      }
+      else {
+        additionalSkill1Need = "0-0";
+      }
+
+      var additionalSkill2NeedBool = document.getElementById("additional-skill-2Need").checked;
+      var additionalSkill2Need;
+      if (additionalSkill2NeedBool == true) {
+        additionalSkill2Need = document.getElementById("additional-skill-2Need").value;
+      } else {
+        additionalSkill2Need = "0-0";
+      }
+
+      var additionalSkill3NeedBool = document.getElementById("additional-skill-3Need").checked;
+      var additionalSkill3Need;
+      if (additionalSkill3NeedBool == true) {
+        additionalSkill3Need = document.getElementById("additional-skill-3Need").value;
+      } else {
+        additionalSkill3Need = "0-0";
+      }
+
+
+      var statBuff1NeedBool = document.getElementById("stat-buffNeed-0").checked;
+      var statBuff2NeedBool = document.getElementById("stat-buffNeed-1").checked;
+      var statBuff3NeedBool = document.getElementById("stat-buffNeed-2").checked;
+      var statBuff4NeedBool = document.getElementById("stat-buffNeed-3").checked;
+      var statBuff5NeedBool = document.getElementById("stat-buffNeed-4").checked;
+      var statBuff6NeedBool = document.getElementById("stat-buffNeed-5").checked;
+      var statBuff7NeedBool = document.getElementById("stat-buffNeed-6").checked;
+      var statBuff8NeedBool = document.getElementById("stat-buffNeed-7").checked;
+      var statBuff9NeedBool = document.getElementById("stat-buffNeed-8").checked;
+      var statBuff10NeedBool = document.getElementById("stat-buffNeed-9").checked;
+
+      var statBuff1Need;
+      if (statBuff1NeedBool == true) {
+        statBuff1Need = document.getElementById("stat-buffNeed-0").value;
+      } else {
+        statBuff1Need = "0-0";
+      }
+      var statBuff2Need;
+      if (statBuff2NeedBool == true) {
+        statBuff2Need = document.getElementById("stat-buffNeed-1").value;
+      }
+      else {
+        statBuff2Need = "0-0";
+      }
+
+      var statBuff3Need;
+      if (statBuff3NeedBool == true) {
+        statBuff3Need = document.getElementById("stat-buffNeed-2").value;
+      }
+      else {
+        statBuff3Need = "0-0";
+      }
+
+      var statBuff4Need;
+      if (statBuff4NeedBool == true) {
+        statBuff4Need = document.getElementById("stat-buffNeed-3").value;
+      }
+      else {
+        statBuff4Need = "0-0";
+      }
+
+      var statBuff5Need;
+      if (statBuff5NeedBool == true) {
+        statBuff5Need = document.getElementById("stat-buffNeed-4").value;
+      }
+      else {
+        statBuff5Need = "0-0";
+      }
+
+      var statBuff6Need;
+      if (statBuff6NeedBool == true) {
+        statBuff6Need = document.getElementById("stat-buffNeed-5").value;
+      }
+      else {
+        statBuff6Need = "0-0";
+      }
+
+      var statBuff7Need;
+      if (statBuff7NeedBool == true) {
+        statBuff7Need = document.getElementById("stat-buffNeed-6").value;
+      }
+      else {
+        statBuff7Need = "0-0";
+      }
+
+      var statBuff8Need;
+      if (statBuff8NeedBool == true) {
+        statBuff8Need = document.getElementById("stat-buffNeed-7").value;
+      }
+      else {
+        statBuff8Need = "0-0";
+      }
+
+      var statBuff9Need;
+      if (statBuff9NeedBool == true) {
+        statBuff9Need = document.getElementById("stat-buffNeed-8").value;
+      }
+      else {
+        statBuff9Need = "0-0";
+      }
+
+      var statBuff10Need;
+      if (statBuff10NeedBool == true) {
+        statBuff10Need = document.getElementById("stat-buffNeed-9").value;
+      }
+      else {
+        statBuff10Need = "0-0";
+      }
+
+      // Log the values to check if they are saved correctly
+      console.log("Total Common: " + totalCommon);
+      console.log("Total Uncommon: " + totalUncommon);
+      console.log("Total Rare: " + totalRare);
+      console.log("Character Level Need: " + characterLevelNeed);
+      console.log("Character Skill Need: " + characterSkillNeed);
+      console.log("Character Talent Need: " + characterTalentNeed);
+      console.log("Character Ultimate Need: " + characterUltimateNeed);
+      console.log("Character Basic Need: " + characterBasicNeed);
+      console.log("Additional Skill 1 Need: " + additionalSkill1Need);
+      console.log("Additional Skill 2 Need: " + additionalSkill2Need);
+      console.log("Additional Skill 3 Need: " + additionalSkill3Need);
+      console.log("Stat Buff 1 Need: " + statBuff1Need);
+      console.log("Stat Buff 2 Need: " + statBuff2Need);
+      console.log("Stat Buff 3 Need: " + statBuff3Need);
+      console.log("Stat Buff 4 Need: " + statBuff4Need);
+      console.log("Stat Buff 5 Need: " + statBuff5Need);
+      console.log("Stat Buff 6 Need: " + statBuff6Need);
+      console.log("Stat Buff 7 Need: " + statBuff7Need);
+      console.log("Stat Buff 8 Need: " + statBuff8Need);
+      console.log("Stat Buff 9 Need: " + statBuff9Need);
+      console.log("Stat Buff 10 Need: " + statBuff10Need);
+
+
+
+
+
+
+
+
+
+
+      if (switchState == true) {
+        console.log("Switch is on");
+        characterLevelHave = (characterLevelHave.split('-')[1]);
+        characterSkillHave = (characterSkillHave.split('-')[1]);
+        characterTalentHave = (characterTalentHave.split('-')[1]);
+        characterUltimateHave = (characterUltimateHave.split('-')[1]);
+        characterBasicHave = (characterBasicHave.split('-')[1]);
+        additionalSkill1Have = (additionalSkill1Have.split('-')[1]);
+        additionalSkill2Have = (additionalSkill2Have.split('-')[1]);
+        additionalSkill3Have = (additionalSkill3Have.split('-')[1]);
+        statBuff1Have = (statBuff1Have.split('-')[1]);
+        statBuff2Have = (statBuff2Have.split('-')[1]);
+        statBuff3Have = (statBuff3Have.split('-')[1]);
+        statBuff4Have = (statBuff4Have.split('-')[1]);
+        statBuff5Have = (statBuff5Have.split('-')[1]);
+        statBuff6Have = (statBuff6Have.split('-')[1]);
+        statBuff7Have = (statBuff7Have.split('-')[1]);
+        statBuff8Have = (statBuff8Have.split('-')[1]);
+        statBuff9Have = (statBuff9Have.split('-')[1]);
+        statBuff10Have = (statBuff10Have.split('-')[1]);
+        characterLevelNeed = (characterLevelNeed.split('-')[1]);
+        characterSkillNeed = (characterSkillNeed.split('-')[1]);
+        characterTalentNeed = (characterTalentNeed.split('-')[1]);
+        characterUltimateNeed = (characterUltimateNeed.split('-')[1]);
+        characterBasicNeed = (characterBasicNeed.split('-')[1]);
+        additionalSkill1Need = (additionalSkill1Need.split('-')[1]);
+        additionalSkill2Need = (additionalSkill2Need.split('-')[1]);
+        additionalSkill3Need = (additionalSkill3Need.split('-')[1]);
+        statBuff1Need = (statBuff1Need.split('-')[1]);
+        statBuff2Need = (statBuff2Need.split('-')[1]);
+        statBuff3Need = (statBuff3Need.split('-')[1]);
+        statBuff4Need = (statBuff4Need.split('-')[1]);
+        statBuff5Need = (statBuff5Need.split('-')[1]);
+        statBuff6Need = (statBuff6Need.split('-')[1]);
+        statBuff7Need = (statBuff7Need.split('-')[1]);
+        statBuff8Need = (statBuff8Need.split('-')[1]);
+        statBuff9Need = (statBuff9Need.split('-')[1]);
+        statBuff10Need = (statBuff10Need.split('-')[1]);
+
+
+
+
+
+
+
+
+
+
+      }
+      else if (switchState == false) {
+        console.log("Switch is off");
+        characterLevelHave = (characterLevelHave.split('-')[0]); //THIS SHOULD BE CALCULATED SEPERATELY
+        characterSkillHave = (characterSkillHave.split('-')[0]);
+        characterTalentHave = (characterTalentHave.split('-')[0]);
+        characterUltimateHave = (characterUltimateHave.split('-')[0]);
+        characterBasicHave = (characterBasicHave.split('-')[0]);
+        additionalSkill1Have = (additionalSkill1Have.split('-')[0]);
+        additionalSkill2Have = (additionalSkill2Have.split('-')[0]);
+        additionalSkill3Have = (additionalSkill3Have.split('-')[0]);
+        statBuff1Have = (statBuff1Have.split('-')[0]);
+        statBuff2Have = (statBuff2Have.split('-')[0]);
+        statBuff3Have = (statBuff3Have.split('-')[0]);
+        statBuff4Have = (statBuff4Have.split('-')[0]);
+        statBuff5Have = (statBuff5Have.split('-')[0]);
+        statBuff6Have = (statBuff6Have.split('-')[0]);
+        statBuff7Have = (statBuff7Have.split('-')[0]);
+        statBuff8Have = (statBuff8Have.split('-')[0]);
+        statBuff9Have = (statBuff9Have.split('-')[0]);
+        statBuff10Have = (statBuff10Have.split('-')[0]);
+        characterLevelNeed = (characterLevelNeed.split('-')[0]);
+        characterSkillNeed = (characterSkillNeed.split('-')[0]);
+        characterTalentNeed = (characterTalentNeed.split('-')[0]);
+        characterUltimateNeed = (characterUltimateNeed.split('-')[0]);
+        characterBasicNeed = (characterBasicNeed.split('-')[0]);
+        additionalSkill1Need = (additionalSkill1Need.split('-')[0]);
+        additionalSkill2Need = (additionalSkill2Need.split('-')[0]);
+        additionalSkill3Need = (additionalSkill3Need.split('-')[0]);
+        statBuff1Need = (statBuff1Need.split('-')[0]);
+        statBuff2Need = (statBuff2Need.split('-')[0]);
+        statBuff3Need = (statBuff3Need.split('-')[0]);
+        statBuff4Need = (statBuff4Need.split('-')[0]);
+        statBuff5Need = (statBuff5Need.split('-')[0]);
+        statBuff6Need = (statBuff6Need.split('-')[0]);
+        statBuff7Need = (statBuff7Need.split('-')[0]);
+        statBuff8Need = (statBuff8Need.split('-')[0]);
+        statBuff9Need = (statBuff9Need.split('-')[0]);
+        statBuff10Need = (statBuff10Need.split('-')[0]);
+
+
+
+
+
+      } else {
+        console.log("----------------SWITCHSTATE ERROR--------------")
+      }
+
+      var totalHave = 0;
+
+      totalHave += parseInt(characterSkillHave);
+      totalHave += parseInt(characterTalentHave);
+      totalHave += parseInt(characterUltimateHave);
+      totalHave += parseInt(characterBasicHave);
+      totalHave += parseInt(additionalSkill1Have);
+      totalHave += parseInt(additionalSkill2Have);
+      totalHave += parseInt(additionalSkill3Have);
+      totalHave += parseInt(statBuff1Have);
+      totalHave += parseInt(statBuff2Have);
+      totalHave += parseInt(statBuff3Have);
+      totalHave += parseInt(statBuff4Have);
+      totalHave += parseInt(statBuff5Have);
+      totalHave += parseInt(statBuff6Have);
+      totalHave += parseInt(statBuff7Have);
+      totalHave += parseInt(statBuff8Have);
+      totalHave += parseInt(statBuff9Have);
+      totalHave += parseInt(statBuff10Have);
+
+      console.log("Total Have: " + totalHave);
+
+      var totalNeed = 0;
+      totalNeed += parseInt(characterLevelNeed);
+      totalNeed += parseInt(characterSkillNeed);
+      totalNeed += parseInt(characterTalentNeed);
+      totalNeed += parseInt(characterUltimateNeed);
+      totalNeed += parseInt(characterBasicNeed);
+      totalNeed += parseInt(additionalSkill1Need);
+      totalNeed += parseInt(additionalSkill2Need);
+      totalNeed += parseInt(additionalSkill3Need);
+      totalNeed += parseInt(statBuff1Need);
+      totalNeed += parseInt(statBuff2Need);
+      totalNeed += parseInt(statBuff3Need);
+      totalNeed += parseInt(statBuff4Need);
+      totalNeed += parseInt(statBuff5Need);
+      totalNeed += parseInt(statBuff6Need);
+      totalNeed += parseInt(statBuff7Need);
+      totalNeed += parseInt(statBuff8Need);
+      totalNeed += parseInt(statBuff9Need);
+      totalNeed += parseInt(statBuff10Need);
+
+      console.log("Total Need: " + totalNeed);
+
+      var totalMissing = totalNeed - totalHave;
+
+      var averageDrops = 5.56;
+      var timeToPullDrops = 3600;
+      var timeToPullMats = 3600 * 4;
+      var MatDrops = 5;
+      var characterLevelMissing = characterLevelNeed - characterLevelHave;
+
+      var matDropsTime = (characterLevelMissing / MatDrops) * timeToPullMats; //how long it takes to get enough materials to ascend to max level
+      var traceTime = (characterLevelMissing / averageDrops) * timeToPullDrops;
+      //CALCULATE BELOW
+      var totalTimeRequired = matDropsTime + traceTime
+
+      var seconds = totalTimeRequired % 60;//use this for display
+      var m = totalTimeRequired / 60;
+
+      var minutes = m % 60;//use this for display
+      var h = m / 60;
+
+      var hours = h % 24;//use this for display
+      var days = h / 24;//use this for display
+      var overallDays = ~~days;
+      var overallHours = ~~hours;
+      var overallMinutes = ~~minutes;
+      var overallSeconds = ~~seconds;
+
+
+
+      document.getElementById("calculateResults").innerHTML = "Overall leveling up your character will take:";
+      document.getElementById("calculateResults2").innerHTML = overallDays + " days, " + overallHours + " hours, " + overallMinutes + " minutes and " + overallSeconds + " seconds";
+
+      event.preventDefault()
+
+    }
+
+
+
+
+
+
+
+
+  </script>
 
-  </form>
-<br>
-<br>
-    </div>
 
-    <div id="result">
 
-<p id="talentValueResult"></p>
-<p id="talentValueMissing"></p>
 
 
-<p id="talentTime"> </p>
-<h3 id="talentTime2"></h3>
 
-<p id="levelTime"></p>
-<h3 id="levelTime2"></h3>
-
-<p id="time"></p>
-<h3 id="time2"></h3>
-    </div>
-</div>
-
-<!-- ---------------------------------THIS IS WHERE THE FUN BEGINS--------------------------------  -->
-<script>
-  function calculate(){
-   
-//Get all the values from the form
-  //get the vales relating to talent levels
-const commonHave = parseInt(document.getElementById('commonHave').value); // common material the user has already
-const uncommonHave = parseInt(document.getElementById('uncommonHave').value); // uncommon material the user has aready
-const rareHave = parseInt(document.getElementById('rareHave').value); // rare material the user has already
-
-
-const currentNormalLevel = parseInt(document.getElementById('currentNormalLevel').value); //chosen characters normal attack level
-const currentSkillLevel = parseInt(document.getElementById('currentSkillLevel').value);//chosen characters skill level
-const currentBurstLevel = parseInt(document.getElementById('currentBurstLevel').value);//chosen characters burst level
-const desiredNormalLevel = parseInt(document.getElementById('desiredNormalLevel').value);//chosen characters desired normal attack level
-const desiredSkillLevel = parseInt(document.getElementById('desiredSkillLevel').value);//chosen characters desired skill level
-const desiredBurstLevel = parseInt(document.getElementById('desiredBurstLevel').value);//chosen characters desired burst level
-
-
-  //get the values related to character level
-const currentLevel = parseInt(document.getElementById('currentLevel').value);//chosen characters current level
-const desiredLevel = parseInt(document.getElementById('desiredLevel').value);//chosen characters desired level
-
-
-
-//talent calculations 
-var totalValueHaveT;//the combined total value of all the talent materials the user currently has
-var totalValueNeedT;//the combined total value of all the talent materials the user currently needs
-
-
-
-totalValueHaveT = commonHave + (uncommonHave*3) + (rareHave*9) + currentNormalLevel + currentSkillLevel + currentBurstLevel;//adds up all the user currently has
-totalValueNeedT = desiredNormalLevel + desiredSkillLevel + desiredBurstLevel;//adds up all the user is currently needing in total
-
-
-
-
-var totalValueMissingT = totalValueNeedT - totalValueHaveT;//finds out how much the user is missing
-
-var totalTimeRequiredT = (totalValueMissingT/10.18) * 9600;
-
-var secondsT = totalTimeRequiredT % 60;//use this for display
-var mT = totalTimeRequiredT / 60;
-
-var minutesT = mT % 60;//use this for display
-var hT = mT / 60;
-
-var hoursT = hT % 24;//use this for display
-
-var daysT = hT / 24;//use this for display
-
-var overallDaysT = ~~daysT;
-var overallHoursT = ~~hoursT;
-var overallMinutesT = ~~minutesT;
-var overallSecondsT = ~~secondsT;
-
-//level calculations
-var missingLevel = desiredLevel - currentLevel;
-
-
-var totalTimeRequiredL = ((missingLevel/5)+1)* 19200;
-
-var secondsL = totalTimeRequiredL % 60;//use this for display
-var mL = totalTimeRequiredL / 60;
-
-var minutesL = mL % 60;//use this for display
-var hL = mL / 60;
-
-var hoursL = hL % 24;//use this for display
-var daysL = hL / 24;//use this for display
-var overallDaysL = ~~daysL;
-var overallHoursL = ~~hoursL;
-var overallMinutesL = ~~minutesL;
-var overallSecondsL = ~~secondsL;
-
-
-//final calulation
-var totalTimeRequired = totalTimeRequiredL + totalTimeRequiredT;
-
-var seconds = totalTimeRequired % 60;//use this for display
-var m = totalTimeRequired / 60;
-
-var minutes = m % 60;//use this for display
-var h = m / 60;
-
-var hours = h % 24;//use this for display
-var days = h / 24;//use this for display
-var overallDays = ~~days;
-var overallHours = ~~hours;
-var overallMinutes = ~~minutes;
-var overallSeconds = ~~seconds;
-//output to webpage
-
-  document.getElementById("talentValueResult").innerHTML = "You have currently gathered talent material to a total of " + totalValueHaveT + " value";
-  document.getElementById("talentValueMissing").innerHTML = "You are still missing talent material to a total of " +totalValueMissingT+ " value";
-
-
-  document.getElementById("talentTime").innerHTML = "Getting your chosen character talents to your desired level will take:";
-  document.getElementById("talentTime2").innerHTML = overallDaysT + " days, " + overallHoursT + " hours, " + overallMinutesT + " minutes and " + overallSecondsT + " seconds";
-  
-  document.getElementById("levelTime").innerHTML = "Getting your chosen character's level to your desired level will take:";
-  document.getElementById("levelTime2").innerHTML = overallDaysL + " days, " + overallHoursL + " hours, " + overallMinutesL + " minutes and " + overallSecondsL + " seconds";
-
-  document.getElementById("time").innerHTML = "Overall leveling up your character will take:";
-  document.getElementById("time2").innerHTML = overallDays + " days, " + overallHours + " hours, " + overallMinutes + " minutes and " + overallSeconds + " seconds";
-
-return false;
-}
-
-calculateButton.addEventListener('click', () => {
-    calculate();
-  });
-
-
-</script>
 
 
 </body>
+
 </html>

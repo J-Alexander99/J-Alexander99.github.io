@@ -4,8 +4,9 @@
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="styleWishStarRail.css">
+
 <head>
- 
+
 
 </head>
 
@@ -13,19 +14,20 @@
 
 
 
-<div class="middlebit">
-    <a href="index.html"><img src="images/starRailWishCalculator.png" id="title" alt="genshin programs" height="100" width="1200"></a>
- <p>This is a wish calculator for Honkai Star Rail</p>
- <p>Please enter the following information into the text boxes to receive you wish predictions</p>
+  <div class="middlebit">
+    <a href="index.html"><img src="images/starRailWishCalculator.png" id="title" alt="genshin programs" height="100"
+        width="1200"></a>
+    <p>This is a wish calculator for Honkai Star Rail</p>
+    <p>Please enter the following information into the text boxes to receive you wish predictions</p>
 
 
-<div id="left">
-    <form>
-      <label for="wishesSaved">Please enter the number of <b>wishes saved</b> currently</label>
-      <input type="number" id="wishesSaved" name="wishesSaved" placeholder="Wishes">
+    <div id="left">
+      <form>
+        <label for="wishesSaved">Please enter the number of <b>wishes saved</b> currently</label>
+        <input type="number" id="wishesSaved" name="wishesSaved" placeholder="Wishes">
         <br>
-      <label for="pity">Please enter the <b>current pity</b></label>
-      <input type="number" id="pity" name="lastname" placeholder="Pity">
+        <label for="pity">Please enter the <b>current pity</b></label>
+        <input type="number" id="pity" name="lastname" placeholder="Pity">
         <br>
         <label for="fifty">Are you <b>garenteed</b> yor chosen character on your next five star</label>
         <select id="fifty" name="fifty">
@@ -33,146 +35,448 @@
           <option value="0">No</option>
         </select>
         <br>
-      <br>
-      <label for="daysLeft">Please enter the <b>number of days</b> until the end of the <b>current update</b></label>
-      <select id="daysLeft" name="daysLeft">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-        <option value="32">32</option>
-        <option value="33">33</option>
-        <option value="34">34</option>
-        <option value="35">35</option>
-        <option value="36">36</option>
-        <option value="37">37</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-      </select>
-<br>
-      <label for="updateCount">Please enter the number of <b>updates</b> until your wanted character</label>
-      <select id="updateCount" name="updateCount">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>
-      <br>
-      <label for="updateHalf">Please select which <b>half of the update</b> your desired character's banner is on</label>
-      <select id="updateHalf" name="updateHalf">
-        <option value="75">The First Banner</option>
-        <option value="0">The Second Banner</option>
-      </select>
-      <br>
-      <label for="paid">Are you a <b>paid</b> user</label>
-      <select id="paid" name="paid">
-        <option value="37">BattlePass + Welkin</option>
-        <option value="7">BattlePass</option>
-        <option value="30">Welkin</option>
-        <option value="0">F2P</option>
-        <option value="99999">Whale</option>
-      </select>
-      <br>
-    <br>
+        <br>
+        <label for="daysLeft">Please enter the <b>number of days</b> until the end of the <b>current update</b></label>
+        <select id="daysLeft" name="daysLeft">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+        </select>
+        <br>
+        <label for="updateCount">Please enter the number of <b>updates</b> until your wanted character</label>
+        <select id="updateCount" name="updateCount">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <br>
+        <label for="updateHalf">Please select which <b>half of the update</b> your desired character's banner is
+          on</label>
+        <select id="updateHalf" name="updateHalf">
+          <option value="75">The First Banner</option>
+          <option value="0">The Second Banner</option>
+        </select>
+        <br>
+        <label for="paid">Are you a <b>paid</b> user</label>
+        <select id="paid" name="paid">
+          <option value="30.8">BattlePass + Welkin</option>
+          <option value="8.3">BattlePass</option>
+          <option value="22.5">Welkin</option>
+          <option value="0">F2P</option>
+          <option value="99999">Whale</option>
+        </select>
+        <br>
+        <br>
 
 
 
- <button  id="calculateButton">Calculate</button>
-   
-    </form>
+        <button id="calculateButton">Calculate</button>
+
+      </form>
 
 
+      <form>
+        <label for="WishesToSim">Please enter the amount of wished to simulate with: </label>
+        <input type="number" id="WishesToSim" name="WishesToSim" placeholder="WishesToSim">
+        <br>
+        <label for="CharacterPity">Please enter the current pity on the <b>Character Banner</b>:</label>
+        <input type="number" id="CharacterPity" name="lasCharacterPitytname" placeholder="CharacterPity">
+        <br>
+        <label for="LightConePity">Please enter the current pity on the <b>LightCone Banner</b>:</label>
+        <input type="number" id="LightConePity" name="LightConePity" placeholder="LightConePity">
+        <br>
+        <label for="CharacterFiftyFifty">Are you <b>garenteed</b> your chosen <b>Character</b> on your next five
+          star:</label>
+        <select id="CharacterFiftyFifty" name="CharacterFiftyFifty">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+        <br>
+        <label for="LightConeFiftyFifty">Are you <b>garenteed</b> your chosen <b>LightCone</b> on your next five
+          star:</label>
+        <select id="LightConeFiftyFifty" name="LightConeFiftyFifty">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+
+        <br>
+        <label for="CharactersWanted">Please enter the <b>number of Characters</b> you would like to pull: </b></label>
+        <select id="CharactersWanted" name="CharactersWanted">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+        </select>
+        <br>
+        <label for="LightConesWanted">Please enter the <b>number of LightCones</b> you would like to pull: </b></label>
+        <select id="LightConesWanted" name="LightConesWanted">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+        </select>
+        <br>
+        <br>
+        <label for="Simulations">Please enter the <b>Simulation Style</b> you would like to use: </b></label>
+        <select id="Simulations" name="Simulations">
+          <option value="1">Instant (Highly Inaccurate)</option>
+          <option value="10">Super Fast (Inaccurate)</option>
+          <option value="100">Fast (Semi-Accurate)</option>
+          <option value="1000">Regular (Accurate)</option>
+          <option value="10000">Slow (Highly Accurate)</option>
+          <option value="100000">Experimental (Super Accurate) *May Lag*</option>
+
+        </select>
+        <br>
+        <br>
+
+
+
+        <button id="calculateButton2">Calculate</button>
+
+      </form>
+
+    </div>
+
+    <div id="right">
+      <h1>Wish Results</h1>
+
+
+      <h2>Number of wishes you will be able to make: </h2>
+      <p id="wishes"></p>
+
+
+      <h2>Chance of getting what you want: </h2>
+      <p id="characters"></p>
+
+
+
+
+    </div>
   </div>
-  
-  <div id="right">
-    <h1>Wish Results</h1>
+  <!-- ---------------------------------THIS IS WHERE THE FUN BEGINS--------------------------------  -->
+  <script>
+    function calculate() {
+
+      //Get all the values from the form
+
+      const wishesSaved = parseInt(document.getElementById('wishesSaved').value); //number of wishes the user has currently saved
+      //var pity = parseInt(document.getElementById('pity').value); //the current pity level of the user
+      //var fifty = parseInt(document.getElementById('fifty').value); //if the user has a gareenteed chosen character or not (possibly bool)
+      var daysLeft = parseInt(document.getElementById('daysLeft').value); //number of days left on the update
+      var updateCount = parseInt(document.getElementById('updateCount').value); //how many updates until the characters banner
+      var updateHalf = parseInt(document.getElementById('updateHalf').value); //if the character is released on the first or second half of the update
+      var paid = parseInt(document.getElementById('paid').value); //if the user buys the welkin and battlepass (about 36 wishes per update)
+
+      var wishesPerUpdate = 101 + paid;
 
 
-    <h2>Number of wishes you will be able to make: </h2>
-     <p id="wishes"></p>
+      var totalWishesSaved = wishesSaved + (updateCount * wishesPerUpdate) + ((wishesPerUpdate / 40) * daysLeft) - updateHalf;
+
+      var charactersGaurenteed = totalWishesSaved / 150;
 
 
-    <h2>Number of characters this will garentee you: </h2>
-    <p id="characters"></p>
-    
-    
+      //remove fractions
+      var printedWishes = ~~totalWishesSaved;
+      var printedCharacters = ~~charactersGaurenteed;
 
+      //output to webpage
 
-  </div>
-</div>
-<!-- ---------------------------------THIS IS WHERE THE FUN BEGINS--------------------------------  -->
-<script>
-    function calculate(){
-     
-  //Get all the values from the form
+      document.getElementById("wishes").innerHTML = printedWishes;
+      // document.getElementById("characters").innerHTML = printedCharacters;
+      event.preventDefault()
+      return false;
+    }
 
-  const wishesSaved = parseInt(document.getElementById('wishesSaved').value); //number of wishes the user has currently saved
-  var pity= parseInt(document.getElementById('pity').value); //the current pity level of the user
-  var fifty= parseInt(document.getElementById('fifty').value); //if the user has a gareenteed chosen character or not (possibly bool)
-  var daysLeft= parseInt(document.getElementById('daysLeft').value); //number of days left on the update
-  var updateCount= parseInt(document.getElementById('updateCount').value); //how many updates until the characters banner
-  var updateHalf= parseInt(document.getElementById('updateHalf').value); //if the character is released on the first or second half of the update
-  var paid= parseInt(document.getElementById('paid').value); //if the user buys the welkin and battlepass (about 36 wishes per update)
-  
-  var wishesPerUpdate = 72 + paid;
-
-
-  var totalWishesSaved = wishesSaved + pity + fifty + (updateCount * wishesPerUpdate) + ((wishesPerUpdate/40) * daysLeft) - updateHalf;
-
-  var charactersGaurenteed = totalWishesSaved / 150;
-  
-
-  //remove fractions
-    var printedWishes = ~~ totalWishesSaved;
-    var printedCharacters = ~~ charactersGaurenteed;
-
-  //output to webpage
-  
-    document.getElementById("wishes").innerHTML =  printedWishes;
-    document.getElementById("characters").innerHTML = printedCharacters;
-    event.preventDefault()
-  return false;
-  }
-  
-  calculateButton.addEventListener('click', () => {
+    calculateButton.addEventListener('click', () => {
       calculate();
     });
-  
-  
+
+    calculateButton2.addEventListener('click', () => {
+      calculate2();
+    });
+
+
+    //wish per update average
+
+    update0 = 213; //1.0
+    update1 = 93.5; //1.1
+    update2 = 93.9; //1.2
+    update3 = 108.1 //1.3
+    update4 = 77.1 //1.4
+    update5 = 106.5 //1.5
+    update6 = 103.4 //1.6
+    update7 = 123.9 //2.0
+
+    function calculate2() {
+      const OddsOfFiveStar = 0.006; //this is the % chance of getting a five star ?character? and light cone i think
+      const OddsIncrease = 0.06; //this is how much the OddsOfFiveStar value will increase after soft pity. this will stack until hard pity
+
+      //pity for banners
+      const SoftPityCharacterBanner = 74; //this is when the odds change      
+      const SoftPityLightConeBanner = 64; //this is when the odds change          
+      const HardPityCharacterBanner = 90; //this is when it is guaranteed       
+      const HardPityLightConeBanner = 80; //this is when it is guaranteed
+
+      //calculations for when a five star is pulled
+      const OddsOfBannerCharacter = 0.5; //this is the fifty-fifty
+      const OddsOfBannerLightCone = 0.75;//this is the "fifty-fifty" for the lightcone banner 
+
+      //user inputs
+      var CharacterPity = parseInt(document.getElementById('CharacterPity').value);; //this will increase with every unseccessful pull. will also be reset to zero when successful pull is done. can be set at beginning.
+      var LightConePity = parseInt(document.getElementById('LightConePity').value);; //this will increase with every unseccessful pull. will also be reset to zero when successful pull is done. can be set at beginning.
+      var wishes = parseInt(document.getElementById('WishesToSim').value);; //this will be the amount of wishes used by the simulator
+      var UnallottedWishes = wishes; //wishes that are still to be spent
+      var CharactersWanted = parseInt(document.getElementById('CharactersWanted').value);; //CHANGE LATER
+      var LightConesWanted = parseInt(document.getElementById('LightConesWanted').value);; //CHANGE LATER
+
+      var CharacterBoolFix = document.getElementById('CharacterFiftyFifty').value;
+      var CharacterDefaultFiftyFifty = (CharacterBoolFix === 'true');
+      var LightConeBoolFix = document.getElementById('LightConeFiftyFifty').value;
+      var LightConeDefaultFiftyFifty = (LightConeBoolFix === 'true');
+      var CharacterFiftyFifty = CharacterDefaultFiftyFifty;
+      var LightConeFiftyFifty = LightConeDefaultFiftyFifty;
+      //other
+
+      const Simulations = parseInt(document.getElementById('Simulations').value);
+      var CompletedSimulations = 0;
+      var CharactersGotten = 0;
+      var LightConesGotten = 0;
+      var SuccessfulSim = 0;
+      var CharacterOverPity = 12;
+      var LightConeOverPity = 0;
+      //Start
+
+
+
+
+      while (CompletedSimulations < Simulations) {
+        console.log(SuccessfulSim);
+        //console.log("Characters Gotten " + CharactersGotten);
+        console.log("Wishes " + UnallottedWishes);
+
+
+        //character loop
+        while (UnallottedWishes > 0 && CharactersGotten < CharactersWanted) {
+          const randomValue = Math.random(); // Generate a random number between 0 and 1
+          console.log(randomValue);
+          const randomValue2 = Math.random(); // Generate a random number between 0 and 1
+          CharacterOverPity = 0; // Reset calcs
+          if (CharacterPity > SoftPityCharacterBanner) {
+            CharacterOverPity = CharacterPity - SoftPityCharacterBanner;
+          }
+          UnallottedWishes = UnallottedWishes - 1;
+          if (randomValue < (OddsOfFiveStar + (CharacterOverPity * OddsIncrease))) {
+            if (CharacterFiftyFifty == true) {
+              CharactersGotten = CharactersGotten + 1;
+              CharacterFiftyFifty = false;
+              console.log("Character Gotten on 50/50"); //DEBUG CODE XXXXXXXXX
+            }
+            else {
+              if (randomValue2 < OddsOfBannerCharacter) {
+                CharactersGotten = CharactersGotten + 1;
+                console.log("Character gotten without 50/50"); //DEBUG CODE XXXXXXXXXXX
+              }
+              else {
+                CharacterFiftyFifty = true;
+                console.log("Lost 50/50")
+              }
+
+            }
+            CharacterPity = 0;
+          }
+          CharacterPity = CharacterPity + 1;
+          console.log("Character Pity " + CharacterPity);
+        }
+
+        //LightCone loop
+        while (UnallottedWishes > 0 && LightConesGotten < LightConesWanted) {
+          const randomValue = Math.random(); // Generate a random number between 0 and 1
+          console.log(randomValue);
+          const randomValue2 = Math.random(); // Generate a random number between 0 and 1
+          LightConeOverPity = 0; //reset calcs
+          if (LightConePity > SoftPityLightConeBanner) {
+            LightConeOverPity = LightConePity - SoftPityLightConeBanner;
+          }
+          UnallottedWishes = UnallottedWishes - 1;
+          if (randomValue < (OddsOfFiveStar + (LightConeOverPity * OddsIncrease))) {
+            if (LightConeFiftyFifty == true) {
+              LightConesGotten = LightConesGotten + 1;
+              LightConeFiftyFifty = false;
+              console.log("LightCone Gotten on 50/50"); //DEBUG CODE XXXXXXXXX
+            }
+            else {
+              if (randomValue2 < OddsOfBannerLightCone) {
+                LightConesGotten = LightConesGotten + 1;
+                console.log("LightCone gotten without 50/50"); //DEBUG CODE XXXXXXXXXXX
+              }
+              else {
+                LightConeFiftyFifty = true;
+                console.log("Lost 50/50")
+              }
+
+            }
+            LightConePity = 0;
+          }
+          LightConePity++;
+          console.log("LightCone Pity " + LightConePity);
+        }
+
+
+
+
+
+
+
+
+
+        if (CharactersGotten == CharactersWanted && LightConesGotten == LightConesWanted) {
+          SuccessfulSim++;
+        }
+
+
+        CompletedSimulations = CompletedSimulations + 1;
+        CharactersGotten = 0;
+        LightConesGotten = 0;
+        UnallottedWishes = wishes;
+        CharacterOverPity = 0;
+        LightConeOverPity = 0;
+        CharacterPity = 0;
+        LightConePity = 0;
+        CharacterFiftyFifty = CharacterDefaultFiftyFifty;
+        LightConeFiftyFifty = LightConeDefaultFiftyFifty;
+
+      }
+
+
+      var Chance = SuccessfulSim / CompletedSimulations * 100;
+      document.getElementById("characters").innerHTML = (Chance + "%");
+      event.preventDefault()
+    }
+
+
+
+
+
   </script>
 
 
 
 </body>
+
 </html>

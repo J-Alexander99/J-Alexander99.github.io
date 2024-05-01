@@ -1,98 +1,107 @@
+body {
 
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)),
 
-body{
-
-    background-image:
-    linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-      ),
-    
     url("images/trailblazeCounterBackground.png");
-	background-size: cover;
-
+  background-size: cover;
+  margin: 0;
+  /* Remove default body margin */
 
 }
 
-h1{
- font-size: 500%;
+h1 {
+  font-size: 500%;
 }
 
-h3{
+h3 {
   font-size: 200%;
 
 }
 
-p{
+p {
   font-size: 100%;
 }
 
-#time,#levelTime,#talentTime {
+#time,
+#levelTime,
+#talentTime {
   font-size: 120%;
 }
 
-#mainhead{
-    color: aliceblue;
-
-    text-align: center;
-}
-
-#contentbit{
-    display: flex;
-}
-
-#gather{
-    color: aliceblue;
-    flex: 1;
-
-}
-
-#result{
-    color: aliceblue;
-    
-    width: 32%;
-    float: right;
-    padding: 20px;
-
+#mainhead {
+  color: aliceblue;
+  text-align: center;
+  width: 100%;
+  /* Span the entire width */
 }
 
 
+#contentbit {
+  display: flex;
+}
 
-#cars, #fname,#currentLevel,#desiredLevel,#commonHave,#uncommonHave,
-#rareHave,#currentNormalLevel,#currentSkillLevel,#currentBurstLevel,
-#desiredNormalLevel,#desiredSkillLevel,#desiredBurstLevel {
-    display: inline-block;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px 4px;
-    color: white;
-    font-size: 130%;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
-      0 1px 1px rgba(128, 128, 128, 0.155),
-      0 2.1px 2.1px rgba(128, 128, 128, 0.195),
-      0 4.4px 4.4px rgba(128, 128, 128, 0.241),
-      0 12px 12px rgba(128, 128, 128, 0.35);
-  
-    h1 {
-      margin: 0 0 24px 0;
-    }
-  
-    .form-input-material {
-      margin: 12px 0;
-    }
+#gather {
+  color: aliceblue;
+  display: flex;
+  flex: 1;
+}
 
+#result {
+  color: aliceblue;
+  width: 100%;
+  /* Takes full width */
+  padding: 20px;
+}
+
+
+
+#cars,
+#fname,
+#currentLevel,
+#desiredLevel,
+#commonHave,
+#uncommonHave,
+#rareHave,
+#currentNormalLevel,
+#currentSkillLevel,
+#currentBurstLevel,
+#desiredNormalLevel,
+#desiredSkillLevel,
+#desiredBurstLevel {
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 4px;
+  color: white;
+  font-size: 130%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+    0 1px 1px rgba(128, 128, 128, 0.155),
+    0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+    0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+    0 12px 12px rgba(128, 128, 128, 0.35);
+
+  h1 {
+    margin: 0 0 24px 0;
   }
-  
-  #calculateButton{
-    display: inline-block;
+
+  .form-input-material {
+    margin: 12px 0;
+  }
+
+}
+
+#calculateButton {
+  display: inline-block;
   outline: none;
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
   border-radius: 500px;
-  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
   transition-duration: .3s;
   border: 1px solid transparent;
   letter-spacing: 2px;
@@ -106,17 +115,23 @@ p{
   box-shadow: inset 0 0 0 2px #616467;
   background-color: transparent;
   height: 48px;
-    
-  }
+
+}
 
 
 
 
-  #calculateButton:hover{
-    background: transparent;
-    box-shadow: 0 0 20px 10px hsla(0, 0%, 100%, 0.5);
+#calculateButton:hover {
+  background: transparent;
+  box-shadow: 0 0 20px 10px hsla(0, 0%, 100%, 0.5);
 
 
 
-    }
+}
 
+#userHas,
+#userNeeds {
+  flex: 1;
+  /* Each column takes half of the width */
+  padding: 10px;
+}
