@@ -777,101 +777,158 @@
 
 
 
-      if (switchState == true) {
-        console.log("Switch is on");
-        characterLevelHave = (characterLevelHave.split('-')[1]);
-        characterSkillHave = (characterSkillHave.split('-')[1]);
-        characterTalentHave = (characterTalentHave.split('-')[1]);
-        characterUltimateHave = (characterUltimateHave.split('-')[1]);
-        characterBasicHave = (characterBasicHave.split('-')[1]);
-        additionalSkill1Have = (additionalSkill1Have.split('-')[1]);
-        additionalSkill2Have = (additionalSkill2Have.split('-')[1]);
-        additionalSkill3Have = (additionalSkill3Have.split('-')[1]);
-        statBuff1Have = (statBuff1Have.split('-')[1]);
-        statBuff2Have = (statBuff2Have.split('-')[1]);
-        statBuff3Have = (statBuff3Have.split('-')[1]);
-        statBuff4Have = (statBuff4Have.split('-')[1]);
-        statBuff5Have = (statBuff5Have.split('-')[1]);
-        statBuff6Have = (statBuff6Have.split('-')[1]);
-        statBuff7Have = (statBuff7Have.split('-')[1]);
-        statBuff8Have = (statBuff8Have.split('-')[1]);
-        statBuff9Have = (statBuff9Have.split('-')[1]);
-        statBuff10Have = (statBuff10Have.split('-')[1]);
-        characterLevelNeed = (characterLevelNeed.split('-')[1]);
-        characterSkillNeed = (characterSkillNeed.split('-')[1]);
-        characterTalentNeed = (characterTalentNeed.split('-')[1]);
-        characterUltimateNeed = (characterUltimateNeed.split('-')[1]);
-        characterBasicNeed = (characterBasicNeed.split('-')[1]);
-        additionalSkill1Need = (additionalSkill1Need.split('-')[1]);
-        additionalSkill2Need = (additionalSkill2Need.split('-')[1]);
-        additionalSkill3Need = (additionalSkill3Need.split('-')[1]);
-        statBuff1Need = (statBuff1Need.split('-')[1]);
-        statBuff2Need = (statBuff2Need.split('-')[1]);
-        statBuff3Need = (statBuff3Need.split('-')[1]);
-        statBuff4Need = (statBuff4Need.split('-')[1]);
-        statBuff5Need = (statBuff5Need.split('-')[1]);
-        statBuff6Need = (statBuff6Need.split('-')[1]);
-        statBuff7Need = (statBuff7Need.split('-')[1]);
-        statBuff8Need = (statBuff8Need.split('-')[1]);
-        statBuff9Need = (statBuff9Need.split('-')[1]);
-        statBuff10Need = (statBuff10Need.split('-')[1]);
+  if (switchState == true) {
+      console.log("Switch is on");
+      characterLevelHave = (characterLevelHave.split('-')[1]);
+      console.log("characterLevelHave:", characterLevelHave);
+      characterSkillHave = (characterSkillHave.split('-')[1]);
+      console.log("characterSkillHave:", characterSkillHave);
+      characterTalentHave = (characterTalentHave.split('-')[1]);
+      console.log("characterTalentHave:", characterTalentHave);
+      characterUltimateHave = (characterUltimateHave.split('-')[1]);
+      console.log("characterUltimateHave:", characterUltimateHave);
+      characterBasicHave = (characterBasicHave.split('-')[1]);
+      console.log("characterBasicHave:", characterBasicHave);
+      additionalSkill1Have = (additionalSkill1Have.split('-')[1]);
+      console.log("additionalSkill1Have:", additionalSkill1Have);
+      additionalSkill2Have = (additionalSkill2Have.split('-')[1]);
+      console.log("additionalSkill2Have:", additionalSkill2Have);
+      additionalSkill3Have = (additionalSkill3Have.split('-')[1]);
+      console.log("additionalSkill3Have:", additionalSkill3Have);
+      statBuff1Have = (statBuff1Have.split('-')[1]);
+      console.log("statBuff1Have:", statBuff1Have);
+      statBuff2Have = (statBuff2Have.split('-')[1]);
+      console.log("statBuff2Have:", statBuff2Have);
+      statBuff3Have = (statBuff3Have.split('-')[1]);
+      console.log("statBuff3Have:", statBuff3Have);
+      statBuff4Have = (statBuff4Have.split('-')[1]);
+      console.log("statBuff4Have:", statBuff4Have);
+      statBuff5Have = (statBuff5Have.split('-')[1]);
+      console.log("statBuff5Have:", statBuff5Have);
+      statBuff6Have = (statBuff6Have.split('-')[1]);
+      console.log("statBuff6Have:", statBuff6Have);
+      statBuff7Have = (statBuff7Have.split('-')[1]);
+      console.log("statBuff7Have:", statBuff7Have);
+      statBuff8Have = (statBuff8Have.split('-')[1]);
+      console.log("statBuff8Have:", statBuff8Have);
+      statBuff9Have = (statBuff9Have.split('-')[1]);
+      console.log("statBuff9Have:", statBuff9Have);
+      statBuff10Have = (statBuff10Have.split('-')[1]);
+      console.log("statBuff10Have:", statBuff10Have);
+      characterLevelNeed = (characterLevelNeed.split('-')[1]);
+      console.log("characterLevelNeed:", characterLevelNeed);
+      characterSkillNeed = (characterSkillNeed.split('-')[1]);
+      console.log("characterSkillNeed:", characterSkillNeed);
+      characterTalentNeed = (characterTalentNeed.split('-')[1]);
+      console.log("characterTalentNeed:", characterTalentNeed);
+      characterUltimateNeed = (characterUltimateNeed.split('-')[1]);
+      console.log("characterUltimateNeed:", characterUltimateNeed);
+      characterBasicNeed = (characterBasicNeed.split('-')[1]);
+      console.log("characterBasicNeed:", characterBasicNeed);
+      additionalSkill1Need = (additionalSkill1Need.split('-')[1]);
+      console.log("additionalSkill1Need:", additionalSkill1Need);
+      additionalSkill2Need = (additionalSkill2Need.split('-')[1]);
+      console.log("additionalSkill2Need:", additionalSkill2Need);
+      additionalSkill3Need = (additionalSkill3Need.split('-')[1]);
+      console.log("additionalSkill3Need:", additionalSkill3Need);
+      statBuff1Need = (statBuff1Need.split('-')[1]);
+      console.log("statBuff1Need:", statBuff1Need);
+      statBuff2Need = (statBuff2Need.split('-')[1]);
+      console.log("statBuff2Need:", statBuff2Need);
+      statBuff3Need = (statBuff3Need.split('-')[1]);
+      console.log("statBuff3Need:", statBuff3Need);
+      statBuff4Need = (statBuff4Need.split('-')[1]);
+      console.log("statBuff4Need:", statBuff4Need);
+      statBuff5Need = (statBuff5Need.split('-')[1]);
+      console.log("statBuff5Need:", statBuff5Need);
+      statBuff6Need = (statBuff6Need.split('-')[1]);
+      console.log("statBuff6Need:", statBuff6Need);
+      statBuff7Need = (statBuff7Need.split('-')[1]);
+      console.log("statBuff7Need:", statBuff7Need);
+      statBuff8Need = (statBuff8Need.split('-')[1]);
+      console.log("statBuff8Need:", statBuff8Need);
+      statBuff9Need = (statBuff9Need.split('-')[1]);
+      console.log("statBuff9Need:", statBuff9Need);
+      statBuff10Need = (statBuff10Need.split('-')[1]);
+      console.log("statBuff10Need:", statBuff10Need);
+  } else if (switchState == false) {
+      console.log("Switch is off");
+      characterLevelHave = (characterLevelHave.split('-')[0]);
+      console.log("characterLevelHave:", characterLevelHave);
+      characterSkillHave = (characterSkillHave.split('-')[0]);
+      console.log("characterSkillHave:", characterSkillHave);
+      characterTalentHave = (characterTalentHave.split('-')[0]);
+      console.log("characterTalentHave:", characterTalentHave);
+      characterUltimateHave = (characterUltimateHave.split('-')[0]);
+      console.log("characterUltimateHave:", characterUltimateHave);
+      characterBasicHave = (characterBasicHave.split('-')[0]);
+      console.log("characterBasicHave:", characterBasicHave);
+      additionalSkill1Have = (additionalSkill1Have.split('-')[0]);
+      console.log("additionalSkill1Have:", additionalSkill1Have);
+      additionalSkill2Have = (additionalSkill2Have.split('-')[0]);
+      console.log("additionalSkill2Have:", additionalSkill2Have);
+      additionalSkill3Have = (additionalSkill3Have.split('-')[0]);
+      console.log("additionalSkill3Have:", additionalSkill3Have);
+      statBuff1Have = (statBuff1Have.split('-')[0]);
+      console.log("statBuff1Have:", statBuff1Have);
+      statBuff2Have = (statBuff2Have.split('-')[0]);
+      console.log("statBuff2Have:", statBuff2Have);
+      statBuff3Have = (statBuff3Have.split('-')[0]);
+      console.log("statBuff3Have:", statBuff3Have);
+      statBuff4Have = (statBuff4Have.split('-')[0]);
+      console.log("statBuff4Have:", statBuff4Have);
+      statBuff5Have = (statBuff5Have.split('-')[0]);
+      console.log("statBuff5Have:", statBuff5Have);
+      statBuff6Have = (statBuff6Have.split('-')[0]);
+      console.log("statBuff6Have:", statBuff6Have);
+      statBuff7Have = (statBuff7Have.split('-')[0]);
+      console.log("statBuff7Have:", statBuff7Have);
+      statBuff8Have = (statBuff8Have.split('-')[0]);
+      console.log("statBuff8Have:", statBuff8Have);
+      statBuff9Have = (statBuff9Have.split('-')[0]);
+      console.log("statBuff9Have:", statBuff9Have);
+      statBuff10Have = (statBuff10Have.split('-')[0]);
+      console.log("statBuff10Have:", statBuff10Have);
+      characterLevelNeed = (characterLevelNeed.split('-')[0]);
+      console.log("characterLevelNeed:", characterLevelNeed);
+      characterSkillNeed = (characterSkillNeed.split('-')[0]);
+      console.log("characterSkillNeed:", characterSkillNeed);
+      characterTalentNeed = (characterTalentNeed.split('-')[0]);
+      console.log("characterTalentNeed:", characterTalentNeed);
+      characterUltimateNeed = (characterUltimateNeed.split('-')[0]);
+      console.log("characterUltimateNeed:", characterUltimateNeed);
+      characterBasicNeed = (characterBasicNeed.split('-')[0]);
+      console.log("characterBasicNeed:", characterBasicNeed);
+      additionalSkill1Need = (additionalSkill1Need.split('-')[0]);
+      console.log("additionalSkill1Need:", additionalSkill1Need);
+      additionalSkill2Need = (additionalSkill2Need.split('-')[0]);
+      console.log("additionalSkill2Need:", additionalSkill2Need);
+      additionalSkill3Need = (additionalSkill3Need.split('-')[0]);
+      console.log("additionalSkill3Need:", additionalSkill3Need);
+      statBuff1Need = (statBuff1Need.split('-')[0]);
+      console.log("statBuff1Need:", statBuff1Need);
+      statBuff2Need = (statBuff2Need.split('-')[0]);
+      console.log("statBuff2Need:", statBuff2Need);
+      statBuff3Need = (statBuff3Need.split('-')[0]);
+      console.log("statBuff3Need:", statBuff3Need);
+      statBuff4Need = (statBuff4Need.split('-')[0]);
+      console.log("statBuff4Need:", statBuff4Need);
+      statBuff5Need = (statBuff5Need.split('-')[0]);
+      console.log("statBuff5Need:", statBuff5Need);
+      statBuff6Need = (statBuff6Need.split('-')[0]);
+      console.log("statBuff6Need:", statBuff6Need);
+      statBuff7Need = (statBuff7Need.split('-')[0]);
+      console.log("statBuff7Need:", statBuff7Need);
+      statBuff8Need = (statBuff8Need.split('-')[0]);
+      console.log("statBuff8Need:", statBuff8Need);
+      statBuff9Need = (statBuff9Need.split('-')[0]);
+      console.log("statBuff9Need:", statBuff9Need);
+      statBuff10Need = (statBuff10Need.split('-')[0]);
+      console.log("statBuff10Need:", statBuff10Need);
+  } else {
+      console.log("----------------SWITCHSTATE ERROR--------------");
+  }
 
-
-
-
-
-
-
-
-
-
-      }
-      else if (switchState == false) {
-        console.log("Switch is off");
-        characterLevelHave = (characterLevelHave.split('-')[0]); //THIS SHOULD BE CALCULATED SEPERATELY
-        characterSkillHave = (characterSkillHave.split('-')[0]);
-        characterTalentHave = (characterTalentHave.split('-')[0]);
-        characterUltimateHave = (characterUltimateHave.split('-')[0]);
-        characterBasicHave = (characterBasicHave.split('-')[0]);
-        additionalSkill1Have = (additionalSkill1Have.split('-')[0]);
-        additionalSkill2Have = (additionalSkill2Have.split('-')[0]);
-        additionalSkill3Have = (additionalSkill3Have.split('-')[0]);
-        statBuff1Have = (statBuff1Have.split('-')[0]);
-        statBuff2Have = (statBuff2Have.split('-')[0]);
-        statBuff3Have = (statBuff3Have.split('-')[0]);
-        statBuff4Have = (statBuff4Have.split('-')[0]);
-        statBuff5Have = (statBuff5Have.split('-')[0]);
-        statBuff6Have = (statBuff6Have.split('-')[0]);
-        statBuff7Have = (statBuff7Have.split('-')[0]);
-        statBuff8Have = (statBuff8Have.split('-')[0]);
-        statBuff9Have = (statBuff9Have.split('-')[0]);
-        statBuff10Have = (statBuff10Have.split('-')[0]);
-        characterLevelNeed = (characterLevelNeed.split('-')[0]);
-        characterSkillNeed = (characterSkillNeed.split('-')[0]);
-        characterTalentNeed = (characterTalentNeed.split('-')[0]);
-        characterUltimateNeed = (characterUltimateNeed.split('-')[0]);
-        characterBasicNeed = (characterBasicNeed.split('-')[0]);
-        additionalSkill1Need = (additionalSkill1Need.split('-')[0]);
-        additionalSkill2Need = (additionalSkill2Need.split('-')[0]);
-        additionalSkill3Need = (additionalSkill3Need.split('-')[0]);
-        statBuff1Need = (statBuff1Need.split('-')[0]);
-        statBuff2Need = (statBuff2Need.split('-')[0]);
-        statBuff3Need = (statBuff3Need.split('-')[0]);
-        statBuff4Need = (statBuff4Need.split('-')[0]);
-        statBuff5Need = (statBuff5Need.split('-')[0]);
-        statBuff6Need = (statBuff6Need.split('-')[0]);
-        statBuff7Need = (statBuff7Need.split('-')[0]);
-        statBuff8Need = (statBuff8Need.split('-')[0]);
-        statBuff9Need = (statBuff9Need.split('-')[0]);
-        statBuff10Need = (statBuff10Need.split('-')[0]);
-
-
-
-
-
-      } else {
-        console.log("----------------SWITCHSTATE ERROR--------------")
-      }
 
       var totalHave = 0;
 
